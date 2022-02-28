@@ -18,10 +18,10 @@ public class Dashboard extends JFrame implements ActionListener {
 		receptionBut = new JButton("Reception");
 		adminButton = new JButton("Admin Panel");
 
-		adminButton.setBackground(Color.WHITE);
-		adminButton.setForeground(Color.BLACK);
-		receptionBut.setBackground(Color.WHITE);
-		receptionBut.setForeground(Color.BLACK);
+		adminButton.setBackground(Color.BLACK);
+		adminButton.setForeground(Color.WHITE);
+		receptionBut.setBackground(Color.BLACK);
+		receptionBut.setForeground(Color.WHITE);
 
 		adminButton.setBounds(400, 100, 200, 60);
 		receptionBut.setBounds(400, 250, 200, 60);
