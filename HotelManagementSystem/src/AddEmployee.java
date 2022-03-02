@@ -77,7 +77,7 @@ public class AddEmployee extends JFrame implements ActionListener {
 		add(salary);
 
 		eidLab = new JLabel("EMPLOYEE ID");
-		eidLab.setFont(new Font("Serif", Font.BOLD, 17));
+		eidLab.setFont(new Font("Serif", Font.BOLD, 14));
 		eidLab.setBounds(50, 330, 100, 30);
 		add(eidLab);
 		eid = new JTextField();
@@ -131,7 +131,7 @@ public class AddEmployee extends JFrame implements ActionListener {
 			JOptionPane.showMessageDialog(null, "New employee added");
 			setVisible(false);
 		} catch (Exception ex) {
-			JOptionPane.showMessageDialog(null, "FATAL ERROR!");
+			JOptionPane.showMessageDialog(null, "ERROR!");
 			ex.printStackTrace();
 		}
 		

@@ -1,3 +1,8 @@
 CREATE DATABASE project;
 USE project;
+
 create table employee(eid bigint, name varchar(100), age int, gender varchar(10), job varchar(20), salary int, phone bigint, email varchar(30), primary key(eid));
+
+create table driver(d_id bigint, name varchar(100), age int, gender varchar(10), model varchar(20), salary int, plate varchar(20), phone bigint, avail varchar(3), primary key(d_id));
+
+

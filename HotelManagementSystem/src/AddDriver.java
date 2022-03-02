@@ -141,7 +141,7 @@ public class AddDriver extends JFrame implements ActionListener {
 			JOptionPane.showMessageDialog(null, "New Driver added");
 			setVisible(false);
 		} catch (Exception ex) {
-			JOptionPane.showMessageDialog(null, "FATAL ERROR!");
+			JOptionPane.showMessageDialog(null, "ERROR!");
 			ex.printStackTrace();
 		}
 		
