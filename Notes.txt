@@ -1,0 +1,4 @@
+name of the database is project in mysql
+table list: employee
+
+admin panel will have add/update/delete employees,drivers,rooms

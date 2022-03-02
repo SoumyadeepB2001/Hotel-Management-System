@@ -7,7 +7,8 @@ public class Dashboard extends JFrame implements ActionListener {
 	JButton receptionBut, adminButton;
 	JPanel contentPane;
 
-	 Dashboard() {
+	Dashboard() {
+		this.setTitle("Dashboard");
 		setBounds(300, 300, 1000, 500);
 		setVisible(true);
 		setResizable(false);
@@ -33,18 +34,16 @@ public class Dashboard extends JFrame implements ActionListener {
 		receptionBut.addActionListener(this);
 	}
 
-	 public void actionPerformed(ActionEvent e) {
-		 if(e.getSource()==adminButton)
-		 {
-			System.out.println("Admin Button clicked");
-		 }
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == adminButton) {
+			new AdminPanel();
+		}
 
-		 if(e.getSource()==receptionBut)
-		 {
-			System.out.println("Reception Button clicked");
-		 }
+		if (e.getSource() == receptionBut) {
+			new Reception();
+		}
 
-	 }
+	}
 
 	public static void main(String[] args) {
 		new Dashboard();

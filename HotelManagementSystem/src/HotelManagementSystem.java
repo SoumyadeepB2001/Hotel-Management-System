@@ -35,9 +35,9 @@ public class HotelManagementSystem extends JFrame implements ActionListener {
 		setVisible(true);
 
 		while (true) {
-			lid.setVisible(false); 
+			lid.setVisible(false);
 			try {
-				Thread.sleep(500); 
+				Thread.sleep(500);
 			} catch (Exception e) {
 			}
 			lid.setVisible(true);

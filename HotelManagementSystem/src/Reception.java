@@ -1,7 +1,8 @@
 import javax.swing.*;
-import java.sql.*;	
-import java.awt.event.*;
+// import java.sql.*;
+// import java.awt.event.*;
 import java.awt.*;
+
 public class Reception extends JFrame {
 
 	JButton newCustomer, room, department, e_info, c_info, m_info, checkOut, checkStatus, roomStatus, pickUp,
@@ -15,9 +16,10 @@ public class Reception extends JFrame {
 		new Reception();
 	}
 
-	public Reception() {
+	Reception() {
+		this.setTitle("Reception");
 		setVisible(true);
-		setResizable(true);
+		setResizable(false);
 		contentPane = new JPanel();
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -103,7 +105,9 @@ public class Reception extends JFrame {
 		logOut.setBounds(10, 470, 200, 30);
 		add(logOut);
 
-		setBounds(530, 200, 750, 550); //This Line is very important and should be placed at the end only after the image and buttons have been initialized. Or else the JFrame will not refresh itself.
+		setBounds(530, 200, 750, 550); // This Line is very important and should be placed at the end only after the
+										// image and buttons have been initialized. Or else the JFrame will not refresh
+										// itself.
 
 		// Adding Action Listeners
 

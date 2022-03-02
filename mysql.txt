@@ -1,0 +1,3 @@
+CREATE DATABASE project;
+USE project;
+create table employee(eid bigint, name varchar(100), age int, gender varchar(10), job varchar(20), salary int, phone bigint, email varchar(30), primary key(eid));
