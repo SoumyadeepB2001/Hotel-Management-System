@@ -2,7 +2,7 @@ import java.sql.*;
 
 public class DBCon {
 	Connection c;
-	Statement s;
+	Statement s, s2;
 
 	DBCon() {
 		try {
@@ -10,6 +10,7 @@ public class DBCon {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			c = DriverManager.getConnection("jdbc:mysql://localhost:3308/project", "root", "");
 			s = c.createStatement();
+			s2 = c.createStatement();
 
 		} catch (Exception e) {
 			System.out.println(e);

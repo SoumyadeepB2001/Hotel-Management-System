@@ -5,4 +5,8 @@ create table employee(eid bigint, name varchar(100), age int, gender varchar(10)
 
 create table driver(d_id bigint, name varchar(100), age int, gender varchar(10), model varchar(20), salary int, plate varchar(20), phone bigint, avail varchar(3), primary key(d_id));
 
+create table login(username varchar(50), password varchar(25), admin varchar(1), primary key(username));
+insert into login values('admin','admin1','y');
+insert into login values('user1','user1','n');
+
 
