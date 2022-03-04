@@ -36,7 +36,7 @@ public class AddEmployee extends JFrame implements ActionListener {
 		contentPane.add(l1);
 
 		// Adding textfields and labels
-		nameLab = new JLabel("NAME");
+		nameLab = new JLabel("Name");
 		nameLab.setFont(new Font("Serif", Font.BOLD, 17));
 		nameLab.setBounds(50, 80, 100, 30);
 		add(nameLab);
@@ -44,7 +44,7 @@ public class AddEmployee extends JFrame implements ActionListener {
 		name.setBounds(170, 80, 210, 30);
 		add(name);
 
-		ageLab = new JLabel("AGE");
+		ageLab = new JLabel("Age");
 		ageLab.setFont(new Font("Serif", Font.BOLD, 17));
 		ageLab.setBounds(50, 130, 100, 30);
 		add(ageLab);
@@ -52,7 +52,7 @@ public class AddEmployee extends JFrame implements ActionListener {
 		age.setBounds(170, 130, 210, 30);
 		add(age);
 
-		genderLab = new JLabel("GENDER");
+		genderLab = new JLabel("Gender");
 		genderLab.setFont(new Font("Serif", Font.BOLD, 17));
 		genderLab.setBounds(50, 180, 100, 30);
 		add(genderLab);
@@ -60,7 +60,7 @@ public class AddEmployee extends JFrame implements ActionListener {
 		gender.setBounds(170, 180, 210, 30);
 		add(gender);
 
-		jobLab = new JLabel("JOB");
+		jobLab = new JLabel("Job");
 		jobLab.setFont(new Font("Serif", Font.BOLD, 17));
 		jobLab.setBounds(50, 230, 100, 30);
 		add(jobLab);
@@ -68,7 +68,7 @@ public class AddEmployee extends JFrame implements ActionListener {
 		job.setBounds(170, 230, 210, 30);
 		add(job);
 
-		salaryLab = new JLabel("SALARY");
+		salaryLab = new JLabel("Salary");
 		salaryLab.setFont(new Font("Serif", Font.BOLD, 17));
 		salaryLab.setBounds(50, 280, 100, 30);
 		add(salaryLab);
@@ -76,15 +76,15 @@ public class AddEmployee extends JFrame implements ActionListener {
 		salary.setBounds(170, 280, 210, 30);
 		add(salary);
 
-		eidLab = new JLabel("EMPLOYEE ID");
-		eidLab.setFont(new Font("Serif", Font.BOLD, 14));
+		eidLab = new JLabel("Employee ID");
+		eidLab.setFont(new Font("Serif", Font.BOLD, 17));
 		eidLab.setBounds(50, 330, 100, 30);
 		add(eidLab);
 		eid = new JTextField();
 		eid.setBounds(170, 330, 210, 30);
 		add(eid);
 
-		phoneLab = new JLabel("PHONE");
+		phoneLab = new JLabel("Phone No.");
 		phoneLab.setFont(new Font("Serif", Font.BOLD, 17));
 		phoneLab.setBounds(50, 380, 100, 30);
 		add(phoneLab);
@@ -92,7 +92,7 @@ public class AddEmployee extends JFrame implements ActionListener {
 		phone.setBounds(170, 380, 210, 30);
 		add(phone);
 
-		emailLab = new JLabel("EMAIL");
+		emailLab = new JLabel("Email ID");
 		emailLab.setFont(new Font("Serif", Font.BOLD, 17));
 		emailLab.setBounds(50, 430, 100, 30);
 		add(emailLab);
@@ -100,7 +100,7 @@ public class AddEmployee extends JFrame implements ActionListener {
 		email.setBounds(170, 430, 210, 30);
 		add(email);
 
-		button = new JButton("SAVE");
+		button = new JButton("Save");
 		button.setBounds(190, 490, 100, 30);
 		add(button);
 
@@ -110,30 +110,30 @@ public class AddEmployee extends JFrame implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		String nameStr = name.getText();
-		int ageInt = Integer.parseInt(age.getText());
-		int salaryInt = Integer.parseInt(salary.getText());
-		long phoneLong = Long.parseLong(phone.getText());
-		long eidLong = Long.parseLong(eid.getText());
-		String emailStr = email.getText();
-		String genderStr = (String) gender.getSelectedItem();
-		String jobStr = (String) job.getSelectedItem();
-
-		DBCon db = new DBCon();
-		// eid is PRIMARY KEY
-		String str = "INSERT INTO employee values( '" + eidLong + "', '" + nameStr + "', '" + ageInt + "','"
-				+ genderStr + "', '" + jobStr + "', '" + salaryInt + "','" + phoneLong + "', '" + emailStr
-				+ "')";
 
 		try {
+			String nameStr = name.getText();
+			int ageInt = Integer.parseInt(age.getText());
+			int salaryInt = Integer.parseInt(salary.getText());
+			long phoneLong = Long.parseLong(phone.getText());
+			long eidLong = Long.parseLong(eid.getText());
+			String emailStr = email.getText();
+			String genderStr = (String) gender.getSelectedItem();
+			String jobStr = (String) job.getSelectedItem();
+
+			DBCon db = new DBCon();
+			// eid is PRIMARY KEY
+			String str = "INSERT INTO employee values( '" + eidLong + "', '" + nameStr + "', '" + ageInt + "','"
+					+ genderStr + "', '" + jobStr + "', '" + salaryInt + "','" + phoneLong + "', '" + emailStr
+					+ "')";
 
 			db.s.executeUpdate(str);
-			JOptionPane.showMessageDialog(null, "New employee added");
+			JOptionPane.showMessageDialog(null, "New employee added.");
 			setVisible(false);
 		} catch (Exception ex) {
 			JOptionPane.showMessageDialog(null, "ERROR!");
 			ex.printStackTrace();
 		}
-		
+
 	}
 }

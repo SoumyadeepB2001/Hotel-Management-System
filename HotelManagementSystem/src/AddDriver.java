@@ -8,11 +8,11 @@ public class AddDriver extends JFrame implements ActionListener {
 	JPanel contentPane;
 	public ImageIcon i1, i2;
 	public Image i3;
-	public JLabel l1, nameLab, ageLab, genderLab, companyLab, brandLab, availLab, phoneLab,salaryLab,didLab, plateLab;
+	public JLabel l1, nameLab, ageLab, genderLab, companyLab, brandLab, availLab, phoneLab, salaryLab, didLab, plateLab;
 	public JTextField name, age, salary, did, phone, comp, plate;
 	JComboBox gender, available;
 	String genders[] = { "Female", "Male", "Other" };
-	String availablity[] = { "Yes", "No"};
+	String availablity[] = { "Yes", "No" };
 
 	public static void main(String[] args) {
 		new AddDriver();
@@ -35,7 +35,7 @@ public class AddDriver extends JFrame implements ActionListener {
 		contentPane.add(l1);
 
 		// Adding textfields and labels
-		nameLab = new JLabel("NAME");
+		nameLab = new JLabel("Name");
 		nameLab.setFont(new Font("Serif", Font.BOLD, 17));
 		nameLab.setBounds(50, 80, 100, 30);
 		add(nameLab);
@@ -43,7 +43,7 @@ public class AddDriver extends JFrame implements ActionListener {
 		name.setBounds(170, 80, 210, 30);
 		add(name);
 
-		ageLab = new JLabel("AGE");
+		ageLab = new JLabel("Age");
 		ageLab.setFont(new Font("Serif", Font.BOLD, 17));
 		ageLab.setBounds(50, 130, 100, 30);
 		add(ageLab);
@@ -51,7 +51,7 @@ public class AddDriver extends JFrame implements ActionListener {
 		age.setBounds(170, 130, 210, 30);
 		add(age);
 
-		genderLab = new JLabel("GENDER");
+		genderLab = new JLabel("Gender");
 		genderLab.setFont(new Font("Serif", Font.BOLD, 17));
 		genderLab.setBounds(50, 180, 100, 30);
 		add(genderLab);
@@ -59,15 +59,15 @@ public class AddDriver extends JFrame implements ActionListener {
 		gender.setBounds(170, 180, 210, 30);
 		add(gender);
 
-		companyLab = new JLabel("MODEL");
+		companyLab = new JLabel("Model");
 		companyLab.setFont(new Font("Serif", Font.BOLD, 17));
 		companyLab.setBounds(50, 230, 100, 30);
 		add(companyLab);
-		comp=new JTextField();
+		comp = new JTextField();
 		comp.setBounds(170, 230, 210, 30);
 		add(comp);
 
-		salaryLab = new JLabel("SALARY");
+		salaryLab = new JLabel("Salary");
 		salaryLab.setFont(new Font("Serif", Font.BOLD, 17));
 		salaryLab.setBounds(50, 280, 100, 30);
 		add(salaryLab);
@@ -75,7 +75,7 @@ public class AddDriver extends JFrame implements ActionListener {
 		salary.setBounds(170, 280, 210, 30);
 		add(salary);
 
-		didLab = new JLabel("DRIVER ID");
+		didLab = new JLabel("Driver ID");
 		didLab.setFont(new Font("Serif", Font.BOLD, 17));
 		didLab.setBounds(50, 330, 100, 30);
 		add(didLab);
@@ -83,7 +83,7 @@ public class AddDriver extends JFrame implements ActionListener {
 		did.setBounds(170, 330, 210, 30);
 		add(did);
 
-		plateLab = new JLabel("PLATE NO.");
+		plateLab = new JLabel("Plate No.");
 		plateLab.setFont(new Font("Serif", Font.BOLD, 17));
 		plateLab.setBounds(50, 380, 100, 30);
 		add(plateLab);
@@ -91,9 +91,7 @@ public class AddDriver extends JFrame implements ActionListener {
 		plate.setBounds(170, 380, 210, 30);
 		add(plate);
 
-
-
-		phoneLab = new JLabel("PHONE");
+		phoneLab = new JLabel("Phone No.");
 		phoneLab.setFont(new Font("Serif", Font.BOLD, 17));
 		phoneLab.setBounds(50, 430, 100, 30);
 		add(phoneLab);
@@ -101,15 +99,15 @@ public class AddDriver extends JFrame implements ActionListener {
 		phone.setBounds(170, 430, 210, 30);
 		add(phone);
 
-		availLab = new JLabel("AVAILABLE");
+		availLab = new JLabel("Available");
 		availLab.setFont(new Font("Serif", Font.BOLD, 17));
 		availLab.setBounds(50, 480, 100, 30);
 		add(availLab);
 		available = new JComboBox(availablity);
-		available.setBounds(170, 480,210,30);
+		available.setBounds(170, 480, 210, 30);
 		add(available);
 
-		button = new JButton("SAVE");
+		button = new JButton("Save");
 		button.setBounds(190, 550, 100, 30);
 		add(button);
 
@@ -119,23 +117,22 @@ public class AddDriver extends JFrame implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		 String nameStr = name.getText();
-		 String plateStr = plate.getText();
-		 int ageInt = Integer.parseInt(age.getText());
-		 int salaryInt = Integer.parseInt(salary.getText());
-		 long phoneLong = Long.parseLong(phone.getText());
-		 long didLong = Long.parseLong(did.getText());
-		 String genderStr = (String) gender.getSelectedItem();
-		 String availStr = (String) available.getSelectedItem();
-		 String modelStr = comp.getText();
-
-		DBCon db = new DBCon();
-		// eid is PRIMARY KEY
-		String str = "INSERT INTO driver values( '" + didLong + "', '" + nameStr + "', '" + ageInt + "','"
-				+ genderStr + "', '" + modelStr + "', '" + salaryInt + "','" + plateStr + "', '" + phoneLong
-				+ "', '"+availStr+"')";
-
 		try {
+			String nameStr = name.getText();
+			String plateStr = plate.getText();
+			int ageInt = Integer.parseInt(age.getText());
+			int salaryInt = Integer.parseInt(salary.getText());
+			long phoneLong = Long.parseLong(phone.getText());
+			long didLong = Long.parseLong(did.getText());
+			String genderStr = (String) gender.getSelectedItem();
+			String availStr = (String) available.getSelectedItem();
+			String modelStr = comp.getText();
+
+			DBCon db = new DBCon();
+			// eid is PRIMARY KEY
+			String str = "INSERT INTO driver values( '" + didLong + "', '" + nameStr + "', '" + ageInt + "','"
+					+ genderStr + "', '" + modelStr + "', '" + salaryInt + "','" + plateStr + "', '" + phoneLong
+					+ "', '" + availStr + "')";
 
 			db.s.executeUpdate(str);
 			JOptionPane.showMessageDialog(null, "New Driver added");
@@ -144,6 +141,6 @@ public class AddDriver extends JFrame implements ActionListener {
 			JOptionPane.showMessageDialog(null, "ERROR!");
 			ex.printStackTrace();
 		}
-		
+
 	}
 }

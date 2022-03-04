@@ -15,6 +15,7 @@ public class AdminPanel extends JFrame implements ActionListener {
 		contentPane = new JPanel();
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		this.setTitle("Admin Panel");
 
 		addDrivers = new JButton("Add Driver");
 		addEmployees = new JButton("Add Employee");
@@ -83,12 +84,25 @@ public class AdminPanel extends JFrame implements ActionListener {
 			new AddEmployee();
 		}
 
+		if (e.getSource() == delEmployees) {
+			new DeleteEmployee();
+		}
+
 		if (e.getSource() == addDrivers) {
-			System.out.println("Driver Button clicked");
+			new AddDriver();
+		}
+
+		if (e.getSource() == delDrivers) {
+			new DeleteDriver();
 		}
 
 		if (e.getSource() == addRooms) {
-			System.out.println("Room Button clicked");
+			new AddRoom();
+		}
+
+		
+		if (e.getSource() == delRooms) {
+			new DeleteRoom();
 		}
 
 	}

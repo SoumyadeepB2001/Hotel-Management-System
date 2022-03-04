@@ -60,7 +60,7 @@ public class Login extends JFrame implements ActionListener {
 		getContentPane().setBackground(Color.WHITE);
 
 		setVisible(true);
-		setBounds(600,350,545,260);
+		setBounds(600, 350, 545, 260);
 	}
 
 	public void actionPerformed(ActionEvent ae) {
@@ -78,8 +78,9 @@ public class Login extends JFrame implements ActionListener {
 				ResultSet forAdmins = c1.s.executeQuery(adminQuery);
 				ResultSet forNonAdmins = c1.s2.executeQuery(nonAdminQuery);
 
-				// Here only an admin can access the dashboard. 
-				// Normal users (non-admins) like recptionists can only acces the reception frame.
+				// Here only an admin can access the dashboard.
+				// Normal users (non-admins) like recptionists can only access the reception
+				// frame.
 
 				if (forAdmins.next()) {
 					new Dashboard().setVisible(true);
@@ -91,7 +92,8 @@ public class Login extends JFrame implements ActionListener {
 
 				else {
 					JOptionPane.showMessageDialog(null, "Invalid Credentials!");
-					setVisible(false);
+					t1.setText("");
+					t2.setText("");
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
