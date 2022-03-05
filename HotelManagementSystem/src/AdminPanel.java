@@ -84,24 +84,23 @@ public class AdminPanel extends JFrame implements ActionListener {
 			new AddEmployee();
 		}
 
-		if (e.getSource() == delEmployees) {
+		else if (e.getSource() == delEmployees) {
 			new DeleteEmployee();
 		}
 
-		if (e.getSource() == addDrivers) {
+		else if (e.getSource() == addDrivers) {
 			new AddDriver();
 		}
 
-		if (e.getSource() == delDrivers) {
+		else if (e.getSource() == delDrivers) {
 			new DeleteDriver();
 		}
 
-		if (e.getSource() == addRooms) {
+		else if (e.getSource() == addRooms) {
 			new AddRoom();
 		}
-
 		
-		if (e.getSource() == delRooms) {
+		else if (e.getSource() == delRooms) {
 			new DeleteRoom();
 		}
 

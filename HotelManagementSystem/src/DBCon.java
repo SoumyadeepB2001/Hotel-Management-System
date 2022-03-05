@@ -9,8 +9,8 @@ public class DBCon {
 
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			c = DriverManager.getConnection("jdbc:mysql://localhost:3308/project", "root", "");
-			s = c.createStatement();
-			s2 = c.createStatement();
+			s = c.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
+			s2 = c.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
 
 		} catch (Exception e) {
 			System.out.println(e);
