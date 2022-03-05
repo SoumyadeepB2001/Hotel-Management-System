@@ -1,15 +1,7 @@
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
-import java.sql.ResultSet;
+import java.awt.event.*;
+import java.sql.*;
 import net.proteanit.sql.DbUtils;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 public class Room extends JFrame implements ActionListener, WindowListener {
@@ -17,10 +9,10 @@ public class Room extends JFrame implements ActionListener, WindowListener {
 	JTable table;
 	JPanel contentPane;
 	JScrollPane scroll;
-
+	JLabel l1,l2,l3,l4,l5,l6;
 	Room() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(450, 200, 1100, 600);
+		setBounds(450, 50, 640, 750);
 		setTitle("Rooms");
 		setResizable(false);
 		contentPane = new JPanel();
@@ -31,8 +23,28 @@ public class Room extends JFrame implements ActionListener, WindowListener {
 
 		backBut = new JButton("Back");
 		backBut.addActionListener(this);
-		backBut.setBounds(20, 500, 90, 50);
+		backBut.setBounds(260, 650, 80, 40);
 		contentPane.add(backBut);
+
+		l1 = new JLabel("Room No.");
+		l1.setBounds(12,10,100,15);
+		contentPane.add(l1);
+		l2 = new JLabel("Availability");
+		l2.setBounds(112,10,100,15);
+		contentPane.add(l2);
+		l3 = new JLabel("Cleaning Status");
+		l3.setBounds(212,10,100,15);
+		contentPane.add(l3);
+		l4 = new JLabel("Price");
+		l4.setBounds(312,10,100,15);
+		contentPane.add(l4);
+		l5 = new JLabel("Room Type");
+		l5.setBounds(412,10,100,15);
+		contentPane.add(l5);
+		l6 = new JLabel("Bed Type");
+		l6.setBounds(512,10,100,15);
+		contentPane.add(l6);
+
 
 		addWindowListener(this);
 	}
@@ -42,9 +54,12 @@ public class Room extends JFrame implements ActionListener, WindowListener {
 			DBCon c = new DBCon();
 			String info = "select * from room";
 			ResultSet rs = c.s.executeQuery(info);
-			
+			table = new JTable();
+			table.setBounds(10, 40, 600, 600);
+			contentPane.add(table);
+			table.setModel(DbUtils.resultSetToTableModel(rs));
 		} catch (Exception ex) {
-			JOptionPane.showMessageDialog(null, "ERROR!");
+			JOptionPane.showMessageDialog(null, ex);
 			ex.printStackTrace();
 		}
 	}

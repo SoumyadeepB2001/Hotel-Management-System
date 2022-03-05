@@ -131,7 +131,7 @@ public class AddEmployee extends JFrame implements ActionListener {
 			JOptionPane.showMessageDialog(null, "New employee added.");
 			setVisible(false);
 		} catch (Exception ex) {
-			JOptionPane.showMessageDialog(null, "ERROR!");
+			JOptionPane.showMessageDialog(null, ex);
 			ex.printStackTrace();
 		}
 

@@ -20,12 +20,12 @@ public class Dashboard extends JFrame implements ActionListener {
 		adminButton = new JButton("Admin Panel");
 		logOutBut = new JButton("Log Out");
 
-		adminButton.setBackground(Color.BLACK);
-		adminButton.setForeground(Color.WHITE);
-		receptionBut.setBackground(Color.BLACK);
-		receptionBut.setForeground(Color.WHITE);
-		logOutBut.setBackground(Color.BLACK);
-		logOutBut.setForeground(Color.WHITE);
+		adminButton.setBackground(Color.WHITE);
+		adminButton.setForeground(Color.RED);
+		receptionBut.setBackground(Color.WHITE);
+		receptionBut.setForeground(Color.RED);
+		logOutBut.setBackground(Color.WHITE);
+		logOutBut.setForeground(Color.RED);
 
 		adminButton.setBounds(190, 40, 200, 60);
 		receptionBut.setBounds(190, 160, 200, 60);

@@ -84,7 +84,7 @@ public class DeleteDriver extends JFrame implements ActionListener {
 			}
 
 		} catch (Exception ex) {
-			JOptionPane.showMessageDialog(null, "Record not found.");
+			JOptionPane.showMessageDialog(null, ex);
 			ex.printStackTrace();
 		}
 

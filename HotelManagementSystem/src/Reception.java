@@ -34,74 +34,74 @@ public class Reception extends JFrame {
 
 		// Initializing all the buttons
 		newCustomer = new JButton("New Customer Form");
-		newCustomer.setBackground(Color.BLACK);
-		newCustomer.setForeground(Color.WHITE);
+		newCustomer.setBackground(Color.WHITE);
+		newCustomer.setForeground(Color.RED);
 		newCustomer.setBounds(10, 30, 200, 30);
 		add(newCustomer);
 
 		room = new JButton("Room");
-		room.setBackground(Color.BLACK);
-		room.setForeground(Color.WHITE);
+		room.setBackground(Color.WHITE);
+		room.setForeground(Color.RED);
 		room.setBounds(10, 70, 200, 30);
 		add(room);
 
 		department = new JButton("Department");
-		department.setBackground(Color.BLACK);
-		department.setForeground(Color.WHITE);
+		department.setBackground(Color.WHITE);
+		department.setForeground(Color.RED);
 		department.setBounds(10, 110, 200, 30);
 		add(department);
 
 		e_info = new JButton("Employee Information");
-		e_info.setBackground(Color.BLACK);
-		e_info.setForeground(Color.WHITE);
+		e_info.setBackground(Color.WHITE);
+		e_info.setForeground(Color.RED);
 		e_info.setBounds(10, 150, 200, 30);
 		add(e_info);
 
 		c_info = new JButton("Customer Information");
-		c_info.setBackground(Color.BLACK);
-		c_info.setForeground(Color.WHITE);
+		c_info.setBackground(Color.WHITE);
+		c_info.setForeground(Color.RED);
 		c_info.setBounds(10, 190, 200, 30);
 		add(c_info);
 
 		m_info = new JButton("Manager Information");
-		m_info.setBackground(Color.BLACK);
-		m_info.setForeground(Color.WHITE);
+		m_info.setBackground(Color.WHITE);
+		m_info.setForeground(Color.RED);
 		m_info.setBounds(10, 230, 200, 30);
 		add(m_info);
 
 		checkOut = new JButton("Check Out");
-		checkOut.setBackground(Color.BLACK);
-		checkOut.setForeground(Color.WHITE);
+		checkOut.setBackground(Color.WHITE);
+		checkOut.setForeground(Color.RED);
 		checkOut.setBounds(10, 270, 200, 30);
 		add(checkOut);
 
 		checkStatus = new JButton("Update Check Status");
-		checkStatus.setBackground(Color.BLACK);
-		checkStatus.setForeground(Color.WHITE);
+		checkStatus.setBackground(Color.WHITE);
+		checkStatus.setForeground(Color.RED);
 		checkStatus.setBounds(10, 310, 200, 30);
 		add(checkStatus);
 
 		roomStatus = new JButton("Update Room Status");
-		roomStatus.setBackground(Color.BLACK);
-		roomStatus.setForeground(Color.WHITE);
+		roomStatus.setBackground(Color.WHITE);
+		roomStatus.setForeground(Color.RED);
 		roomStatus.setBounds(10, 350, 200, 30);
 		add(roomStatus);
 
 		pickUp = new JButton("Pick Up Service");
-		pickUp.setBackground(Color.BLACK);
-		pickUp.setForeground(Color.WHITE);
+		pickUp.setBackground(Color.WHITE);
+		pickUp.setForeground(Color.RED);
 		pickUp.setBounds(10, 390, 200, 30);
 		add(pickUp);
 
 		searchRoom = new JButton("Search Room");
-		searchRoom.setBackground(Color.BLACK);
-		searchRoom.setForeground(Color.WHITE);
+		searchRoom.setBackground(Color.WHITE);
+		searchRoom.setForeground(Color.RED);
 		searchRoom.setBounds(10, 430, 200, 30);
 		add(searchRoom);
 
 		logOut = new JButton("Log Out");
-		logOut.setBackground(Color.BLACK);
-		logOut.setForeground(Color.WHITE);
+		logOut.setBackground(Color.WHITE);
+		logOut.setForeground(Color.RED);
 		logOut.setBounds(10, 470, 200, 30);
 		add(logOut);
 

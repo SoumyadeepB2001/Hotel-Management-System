@@ -83,6 +83,7 @@ public class DeleteEmployee extends JFrame implements ActionListener {
 			}
 
 		} catch (Exception ex) {
+			JOptionPane.showMessageDialog(null, ex);
 			ex.printStackTrace();
 		}
 
