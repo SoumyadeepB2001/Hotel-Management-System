@@ -8,7 +8,7 @@ public class AddRoom extends JFrame implements ActionListener {
 	JPanel contentPane;
 	public ImageIcon i1, i2;
 	public Image i3;
-	public JLabel l1, roomNumLab, availLab, cleanLab, priceLab, roomLab, bedLab;
+	public JLabel l1, l2, roomNumLab, availLab, cleanLab, priceLab, roomLab, bedLab;
 	public JTextField roomNum, price;
 	JComboBox cleaning, avail, bedType, room;
 	String clean[] = { "Clean", "Not cleaned" };
@@ -27,6 +27,11 @@ public class AddRoom extends JFrame implements ActionListener {
 		contentPane = new JPanel();
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+
+		l2 = new JLabel("Add New Room");
+		l2.setFont(new Font("Serif", Font.BOLD, 19));
+		l2.setBounds(400, 25, 200, 30);
+		add(l2);
 
 		// Adding the image
 		i1 = new ImageIcon(getClass().getResource("Bed.jpg"));

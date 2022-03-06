@@ -65,7 +65,7 @@ public class Room extends JFrame implements ActionListener, WindowListener {
 	}
 
 	public void actionPerformed(ActionEvent ae) {
-		this.setVisible(false);
+		dispose();
 	}
 
 	/*

@@ -8,7 +8,8 @@ public class AddDriver extends JFrame implements ActionListener {
 	JPanel contentPane;
 	public ImageIcon i1, i2;
 	public Image i3;
-	public JLabel l1, nameLab, ageLab, genderLab, companyLab, brandLab, availLab, phoneLab, salaryLab, didLab, plateLab;
+	public JLabel l1, l2, nameLab, ageLab, genderLab, companyLab, brandLab, availLab, phoneLab, salaryLab, didLab,
+			plateLab;
 	public JTextField name, age, salary, did, phone, comp, plate;
 	JComboBox gender, available;
 	String genders[] = { "Female", "Male", "Other" };
@@ -34,6 +35,10 @@ public class AddDriver extends JFrame implements ActionListener {
 		l1.setBounds(410, 80, 480, 410);
 		contentPane.add(l1);
 
+		l2 = new JLabel("Add New Driver");
+		l2.setFont(new Font("Serif", Font.BOLD, 19));
+		l2.setBounds(400, 25, 200, 30);
+		add(l2);
 		// Adding textfields and labels
 		nameLab = new JLabel("Name");
 		nameLab.setFont(new Font("Serif", Font.BOLD, 17));
@@ -136,7 +141,7 @@ public class AddDriver extends JFrame implements ActionListener {
 
 			db.s.executeUpdate(str);
 			JOptionPane.showMessageDialog(null, "New Driver added");
-			setVisible(false);
+			dispose();
 		} catch (Exception ex) {
 			JOptionPane.showMessageDialog(null, ex);
 			ex.printStackTrace();

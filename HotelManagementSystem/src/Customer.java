@@ -4,16 +4,17 @@ import net.proteanit.sql.DbUtils;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
-public class Manager extends JFrame implements ActionListener, WindowListener {
+public class Customer extends JFrame implements ActionListener, WindowListener {
 	JButton backBut;
 	JTable table;
 	JPanel contentPane;
 	JScrollPane scroll;
-	JLabel l1,l2,l3,l4,l5,l6,l7,l8;
-	Manager() {
+	JLabel l1, l2, l3, l4, l5, l6, l7, l8, l9, l10;
+
+	Customer() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(300, 50, 1200, 750);
-		setTitle("Manager");
+		setBounds(300, 50, 1295, 750);
+		setTitle("Customers");
 		setResizable(false);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -23,34 +24,39 @@ public class Manager extends JFrame implements ActionListener, WindowListener {
 
 		backBut = new JButton("Back");
 		backBut.addActionListener(this);
-		backBut.setBounds(565, 650, 80, 40);
+		backBut.setBounds(590, 650, 80, 40);
 		contentPane.add(backBut);
 
-		l1 = new JLabel("Employee ID");
-		l1.setBounds(12,10,100,15);
+		l1 = new JLabel("Name");
+		l1.setBounds(12, 10, 100, 15);
 		contentPane.add(l1);
-		l2 = new JLabel("Name");
-		l2.setBounds(162,10,100,15);
+		l2 = new JLabel("Age");
+		l2.setBounds(138, 10, 100, 15);
 		contentPane.add(l2);
-		l3 = new JLabel("Age");
-		l3.setBounds(312,10,100,15);
+		l3 = new JLabel("Gender");
+		l3.setBounds(264, 10, 100, 15);
 		contentPane.add(l3);
-		l4 = new JLabel("Gender");
-		l4.setBounds(462,10,100,15);
+		l4 = new JLabel("ID Proof");
+		l4.setBounds(390, 10, 100, 15);
 		contentPane.add(l4);
-		l5 = new JLabel("Job");
-		l5.setBounds(612,10,100,15);
+		l5 = new JLabel("ID Number");
+		l5.setBounds(516, 10, 100, 15);
 		contentPane.add(l5);
-		l6 = new JLabel("Salary");
-		l6.setBounds(762,10,100,15);
+		l6 = new JLabel("Country");
+		l6.setBounds(642, 10, 100, 15);
 		contentPane.add(l6);
 		l7 = new JLabel("Phone");
-		l7.setBounds(912,10,100,15);
+		l7.setBounds(768, 10, 100, 15);
 		contentPane.add(l7);
-		l8 = new JLabel("Email");
-		l8.setBounds(1062,10,100,15);
+		l8 = new JLabel("Room Number");
+		l8.setBounds(894, 10, 100, 15);
 		contentPane.add(l8);
-
+		l9 = new JLabel("Checked-In");
+		l9.setBounds(1020, 10, 100, 15);
+		contentPane.add(l9);
+		l10 = new JLabel("Deposit");
+		l10.setBounds(1146, 10, 100, 15);
+		contentPane.add(l10);
 
 		addWindowListener(this);
 	}
@@ -58,10 +64,10 @@ public class Manager extends JFrame implements ActionListener, WindowListener {
 	public void windowOpened(WindowEvent e) {
 		try {
 			DBCon c = new DBCon();
-			String info = "SELECT * FROM employee WHERE job = 'Manager'";
+			String info = "select * from customer";
 			ResultSet rs = c.s.executeQuery(info);
 			table = new JTable();
-			table.setBounds(10, 40, 1160, 600);
+			table.setBounds(10, 40, 1260, 600);
 			contentPane.add(table);
 			table.setModel(DbUtils.resultSetToTableModel(rs));
 		} catch (Exception ex) {
@@ -109,6 +115,6 @@ public class Manager extends JFrame implements ActionListener, WindowListener {
 	}
 
 	public static void main(String[] args) {
-		new Manager();
+		new Customer();
 	}
 }

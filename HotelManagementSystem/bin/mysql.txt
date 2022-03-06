@@ -11,5 +11,6 @@ CREATE TABLE driver(d_id bigint, name varchar(100), age int, gender varchar(10),
 
 CREATE TABLE room(r_num varchar(10), availability varchar(20), cleaning_status varchar(15), price bigint, type varchar(10), bed varchar(10), primary key(r_num));
 
+CREATE TABLE customer(name varchar(100), age int, gender varchar(10), id varchar(20), idnum varchar(25), country varchar(20), phone bigint, r_num varchar(10), checkin varchar(3), deposit int, primary key(idnum));
 
 

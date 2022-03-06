@@ -1,6 +1,14 @@
 name of the database is project in mysql
-table list: login, employee, driver, room
+table list: login, employee, driver, room, customer
 
 Difference between executeQuery and executeUpdate. 
+
+All frames array
+
+Difference between event.getSource() and event.getActionCommand()
+A: getSource() returns the object of the source while getActionCommand() Returns the command string associated with this action.
+
+Difference between frame.dispose() and frame.setVisible(false)
+A: setVisible(false) makes the frame invisible while still stored in memory. dispose() releases memory after removing the frame from view.
 
 

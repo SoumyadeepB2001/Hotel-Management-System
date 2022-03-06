@@ -1,9 +1,8 @@
 import javax.swing.*;
-// import java.sql.*;
-// import java.awt.event.*;
+import java.awt.event.*;
 import java.awt.*;
 
-public class Reception extends JFrame {
+public class Reception extends JFrame implements ActionListener {
 
 	JButton newCustomer, room, department, e_info, c_info, m_info, checkOut, checkStatus, roomStatus, pickUp,
 			searchRoom, logOut;
@@ -39,7 +38,7 @@ public class Reception extends JFrame {
 		newCustomer.setBounds(10, 30, 200, 30);
 		add(newCustomer);
 
-		room = new JButton("Room");
+		room = new JButton("Room Information");
 		room.setBackground(Color.WHITE);
 		room.setForeground(Color.RED);
 		room.setBounds(10, 70, 200, 30);
@@ -110,6 +109,55 @@ public class Reception extends JFrame {
 										// itself.
 
 		// Adding Action Listeners
+		newCustomer.addActionListener(this);
+		room.addActionListener(this);
+		department.addActionListener(this);
+		e_info.addActionListener(this);
+		c_info.addActionListener(this);
+		m_info.addActionListener(this);
+		checkOut.addActionListener(this);
+		checkStatus.addActionListener(this);
+		roomStatus.addActionListener(this);
+		pickUp.addActionListener(this);
+		searchRoom.addActionListener(this);
+		logOut.addActionListener(this);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		switch (e.getActionCommand()) {
+			case "New Customer Form":
+				new NewCustomerForm();
+				break;
+
+			case "Room Information":
+				new Room();
+				break;
+
+			case "Department":
+				break;
+
+			case "Employee Information":
+				new Employee();
+				break;
+
+			case "Customer Information":
+				new Customer();
+				break;
+
+			case "Manager Information":
+				new Manager();
+				break;
+
+			case "Log Out":
+				Frame[] allFrames = Frame.getFrames();
+				// Iterate through the allFrames array
+				for (Frame fr : allFrames) {
+					fr.dispose();
+				}
+				new Login().setVisible(true);
+				break;
+		}
 
 	}
 }

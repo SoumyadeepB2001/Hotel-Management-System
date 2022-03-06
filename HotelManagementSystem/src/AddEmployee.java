@@ -8,7 +8,7 @@ public class AddEmployee extends JFrame implements ActionListener {
 	JPanel contentPane;
 	public ImageIcon i1, i2;
 	public Image i3;
-	public JLabel l1, nameLab, ageLab, genderLab, jobLab, salaryLab, eidLab, phoneLab, emailLab;
+	public JLabel l1, l2, nameLab, ageLab, genderLab, jobLab, salaryLab, eidLab, phoneLab, emailLab;
 	public JTextField name, age, salary, eid, phone, email;
 	JComboBox gender, job;
 	String genders[] = { "Female", "Male", "Other" };
@@ -26,6 +26,11 @@ public class AddEmployee extends JFrame implements ActionListener {
 		contentPane = new JPanel();
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+
+		l2 = new JLabel("Add New Employee");
+		l2.setFont(new Font("Serif", Font.BOLD, 19));
+		l2.setBounds(400, 25, 200, 30);
+		add(l2);
 
 		// Adding the image
 		i1 = new ImageIcon(getClass().getResource("Employee.jpg"));
@@ -129,7 +134,7 @@ public class AddEmployee extends JFrame implements ActionListener {
 
 			db.s.executeUpdate(str);
 			JOptionPane.showMessageDialog(null, "New employee added.");
-			setVisible(false);
+			dispose();
 		} catch (Exception ex) {
 			JOptionPane.showMessageDialog(null, ex);
 			ex.printStackTrace();

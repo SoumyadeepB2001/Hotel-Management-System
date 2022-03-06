@@ -6,8 +6,10 @@ import java.awt.event.*;
 
 public class AdminPanel extends JFrame implements ActionListener {
 
-	JButton addDrivers, addEmployees, addRooms, delDrivers, delEmployees, delRooms, updateEmployees,updateDrivers, updateRooms;
+	JButton addDrivers, addEmployees, addRooms, delDrivers, delEmployees, delRooms, updateEmployees, updateDrivers,
+			updateRooms;
 	JPanel contentPane;
+
 	AdminPanel() {
 		setBounds(300, 300, 575, 450);
 		setVisible(true);
@@ -48,7 +50,7 @@ public class AdminPanel extends JFrame implements ActionListener {
 
 		addEmployees.setBounds(50, 80, 140, 60);
 		delEmployees.setBounds(210, 80, 140, 60);
-		updateEmployees.setBounds(370,80,140,60);
+		updateEmployees.setBounds(370, 80, 140, 60);
 
 		addDrivers.setBounds(50, 180, 140, 60);
 		delDrivers.setBounds(210, 180, 140, 60);
@@ -80,29 +82,64 @@ public class AdminPanel extends JFrame implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == addEmployees) {
-			new AddEmployee();
-		}
+		switch (e.getActionCommand()) { // getActionCommand() Returns the command string associated with this action.
+			case "Add Employee":
+				new AddEmployee();
+				break;
 
-		else if (e.getSource() == delEmployees) {
-			new DeleteEmployee();
-		}
+			case "Delete Employee":
+				new DeleteEmployee();
+				break;
 
-		else if (e.getSource() == addDrivers) {
-			new AddDriver();
-		}
+			case "Update Employee":
+				break;
 
-		else if (e.getSource() == delDrivers) {
-			new DeleteDriver();
-		}
+			case "Add Driver":
+				new AddDriver();
+				break;
 
-		else if (e.getSource() == addRooms) {
-			new AddRoom();
+			case "Delete Driver":
+				new DeleteDriver();
+				break;
+
+			case "Update Driver":
+				break;
+
+			case "Add Room":
+				new AddRoom();
+				break;
+
+			case "Delete Room":
+				new DeleteRoom();
+				break;
+
+			case "Update Room":
+				break;
+
 		}
-		
-		else if (e.getSource() == delRooms) {
-			new DeleteRoom();
-		}
+		// if (e.getSource() == addEmployees) {
+		// new AddEmployee();
+		// }
+
+		// else if (e.getSource() == delEmployees) {
+		// new DeleteEmployee();
+		// }
+
+		// else if (e.getSource() == addDrivers) {
+		// new AddDriver();
+		// }
+
+		// else if (e.getSource() == delDrivers) {
+		// new DeleteDriver();
+		// }
+
+		// else if (e.getSource() == addRooms) {
+		// new AddRoom();
+		// }
+
+		// else if (e.getSource() == delRooms) {
+		// new DeleteRoom();
+		// }
 
 	}
 

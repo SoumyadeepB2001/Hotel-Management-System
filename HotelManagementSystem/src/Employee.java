@@ -71,7 +71,7 @@ public class Employee extends JFrame implements ActionListener, WindowListener {
 	}
 
 	public void actionPerformed(ActionEvent ae) {
-		this.setVisible(false);
+		dispose();
 	}
 
 	/*

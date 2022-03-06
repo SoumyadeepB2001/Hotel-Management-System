@@ -45,13 +45,17 @@ public class Dashboard extends JFrame implements ActionListener {
 			new AdminPanel();
 		}
 
-		if (e.getSource() == receptionBut) {
+		else if (e.getSource() == receptionBut) {
 			new Reception();
 		}
 
-		if (e.getSource() == logOutBut) {
+		else if (e.getSource() == logOutBut) {
+			Frame[] allFrames = Frame.getFrames();
+			// Iterate through the allFrames array
+			for (Frame fr : allFrames) {
+				fr.dispose();
+			}
 			new Login().setVisible(true);
-			setVisible(false);
 		}
 
 	}
