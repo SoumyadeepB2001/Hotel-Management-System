@@ -11,7 +11,7 @@ public class AddDriver extends JFrame implements ActionListener {
 	public JLabel l1, l2, nameLab, ageLab, genderLab, companyLab, brandLab, availLab, phoneLab, salaryLab, didLab,
 			plateLab;
 	public JTextField name, age, salary, did, phone, comp, plate;
-	JComboBox gender, available;
+	JComboBox<String> gender, available;
 	String genders[] = { "Female", "Male", "Other" };
 	String availablity[] = { "Yes", "No" };
 
@@ -60,7 +60,7 @@ public class AddDriver extends JFrame implements ActionListener {
 		genderLab.setFont(new Font("Serif", Font.BOLD, 17));
 		genderLab.setBounds(50, 180, 100, 30);
 		add(genderLab);
-		gender = new JComboBox(genders);
+		gender = new JComboBox<>(genders);
 		gender.setBounds(170, 180, 210, 30);
 		add(gender);
 
@@ -108,7 +108,7 @@ public class AddDriver extends JFrame implements ActionListener {
 		availLab.setFont(new Font("Serif", Font.BOLD, 17));
 		availLab.setBounds(50, 480, 100, 30);
 		add(availLab);
-		available = new JComboBox(availablity);
+		available = new JComboBox<>(availablity);
 		available.setBounds(170, 480, 210, 30);
 		add(available);
 

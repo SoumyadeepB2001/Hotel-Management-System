@@ -11,7 +11,7 @@ public class NewCustomerForm extends JFrame implements ActionListener {
 	public JLabel l1, l2, nameLab, ageLab, genderLab, idLab, idNumLab, countryLab, phoneLab, roomNumLab, checkInLab,
 			depositLab;
 	public JTextField name, age, idNum, country, phone, roomNum, deposit;
-	JComboBox gender, IDDocs, checkedIn;
+	JComboBox <String> gender, IDDocs, checkedIn;
 	String genders[] = { "Female", "Male", "Other" };
 	String yes_no[] = { "Yes", "No" };
 	String ID[] = { "Aadhar Card", "Voter Card", "Passport", "Driver's License", "Work ID" };
@@ -62,7 +62,7 @@ public class NewCustomerForm extends JFrame implements ActionListener {
 		genderLab.setFont(new Font("Serif", Font.BOLD, 17));
 		genderLab.setBounds(50, 180, 100, 30);
 		add(genderLab);
-		gender = new JComboBox(genders);
+		gender = new JComboBox<>(genders);
 		gender.setBounds(170, 180, 210, 30);
 		add(gender);
 
@@ -70,7 +70,7 @@ public class NewCustomerForm extends JFrame implements ActionListener {
 		idLab.setFont(new Font("Serif", Font.BOLD, 17));
 		idLab.setBounds(50, 230, 100, 30);
 		add(idLab);
-		IDDocs = new JComboBox(ID);
+		IDDocs = new JComboBox<>(ID);
 		IDDocs.setBounds(170, 230, 210, 30);
 		add(IDDocs);
 
@@ -110,7 +110,7 @@ public class NewCustomerForm extends JFrame implements ActionListener {
 		checkInLab.setFont(new Font("Serif", Font.BOLD, 17));
 		checkInLab.setBounds(50, 480, 100, 30);
 		add(checkInLab);
-		checkedIn = new JComboBox(yes_no);
+		checkedIn = new JComboBox<>(yes_no);
 		checkedIn.setBounds(170, 480, 210, 30);
 		add(checkedIn);
 

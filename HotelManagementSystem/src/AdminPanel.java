@@ -92,6 +92,7 @@ public class AdminPanel extends JFrame implements ActionListener {
 				break;
 
 			case "Update Employee":
+				new UpdateEmployee();
 				break;
 
 			case "Add Driver":

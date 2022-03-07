@@ -10,7 +10,7 @@ public class AddEmployee extends JFrame implements ActionListener {
 	public Image i3;
 	public JLabel l1, l2, nameLab, ageLab, genderLab, jobLab, salaryLab, eidLab, phoneLab, emailLab;
 	public JTextField name, age, salary, eid, phone, email;
-	JComboBox gender, job;
+	JComboBox <String> gender, job;
 	String genders[] = { "Female", "Male", "Other" };
 	String jobs[] = { "Front Desk Clerk", "Porter", "Housekeeping", "Kitchen Staff", "Room Service", "Waiter/Waitress",
 			"Manager", "Accountant", "Chef", "Security", "Electrician", "Plumber" };
@@ -61,7 +61,7 @@ public class AddEmployee extends JFrame implements ActionListener {
 		genderLab.setFont(new Font("Serif", Font.BOLD, 17));
 		genderLab.setBounds(50, 180, 100, 30);
 		add(genderLab);
-		gender = new JComboBox(genders);
+		gender = new JComboBox<>(genders);
 		gender.setBounds(170, 180, 210, 30);
 		add(gender);
 
@@ -69,7 +69,7 @@ public class AddEmployee extends JFrame implements ActionListener {
 		jobLab.setFont(new Font("Serif", Font.BOLD, 17));
 		jobLab.setBounds(50, 230, 100, 30);
 		add(jobLab);
-		job = new JComboBox(jobs);
+		job = new JComboBox<>(jobs);
 		job.setBounds(170, 230, 210, 30);
 		add(job);
 

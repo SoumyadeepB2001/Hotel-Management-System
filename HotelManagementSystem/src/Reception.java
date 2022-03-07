@@ -44,7 +44,7 @@ public class Reception extends JFrame implements ActionListener {
 		room.setBounds(10, 70, 200, 30);
 		add(room);
 
-		department = new JButton("Department");
+		department = new JButton("Budget Allocation");
 		department.setBackground(Color.WHITE);
 		department.setForeground(Color.RED);
 		department.setBounds(10, 110, 200, 30);
@@ -134,7 +134,8 @@ public class Reception extends JFrame implements ActionListener {
 				new Room();
 				break;
 
-			case "Department":
+			case "Budget Allocation":
+				new Department();
 				break;
 
 			case "Employee Information":
@@ -147,6 +148,10 @@ public class Reception extends JFrame implements ActionListener {
 
 			case "Manager Information":
 				new Manager();
+				break;
+
+			case "Update Check Status":
+				//new UpdateCheckStatus();
 				break;
 
 			case "Log Out":

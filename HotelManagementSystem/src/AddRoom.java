@@ -10,7 +10,7 @@ public class AddRoom extends JFrame implements ActionListener {
 	public Image i3;
 	public JLabel l1, l2, roomNumLab, availLab, cleanLab, priceLab, roomLab, bedLab;
 	public JTextField roomNum, price;
-	JComboBox cleaning, avail, bedType, room;
+	JComboBox <String> cleaning, avail, bedType, room;
 	String clean[] = { "Clean", "Not cleaned" };
 	String types[] = { "Single", "Suite" };
 	String beds[] = { "Single", "Double", "Queen", "King" };
@@ -54,7 +54,7 @@ public class AddRoom extends JFrame implements ActionListener {
 		availLab.setFont(new Font("Serif", Font.BOLD, 17));
 		availLab.setBounds(50, 130, 135, 30);
 		add(availLab);
-		avail = new JComboBox(availability);
+		avail = new JComboBox<>(availability);
 		avail.setBounds(210, 130, 210, 30);
 		add(avail);
 
@@ -62,7 +62,7 @@ public class AddRoom extends JFrame implements ActionListener {
 		cleanLab.setFont(new Font("Serif", Font.BOLD, 17));
 		cleanLab.setBounds(50, 180, 135, 30);
 		add(cleanLab);
-		cleaning = new JComboBox(clean);
+		cleaning = new JComboBox<>(clean);
 		cleaning.setBounds(210, 180, 210, 30);
 		add(cleaning);
 
@@ -78,7 +78,7 @@ public class AddRoom extends JFrame implements ActionListener {
 		roomLab.setFont(new Font("Serif", Font.BOLD, 17));
 		roomLab.setBounds(50, 280, 135, 30);
 		add(roomLab);
-		room = new JComboBox(types);
+		room = new JComboBox<>(types);
 		room.setBounds(210, 280, 210, 30);
 		add(room);
 
@@ -86,7 +86,7 @@ public class AddRoom extends JFrame implements ActionListener {
 		bedLab.setFont(new Font("Serif", Font.BOLD, 17));
 		bedLab.setBounds(50, 330, 135, 30);
 		add(bedLab);
-		bedType = new JComboBox(beds);
+		bedType = new JComboBox<>(beds);
 		bedType.setBounds(210, 330, 210, 30);
 		add(bedType);
 
