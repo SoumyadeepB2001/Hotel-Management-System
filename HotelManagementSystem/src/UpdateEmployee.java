@@ -164,59 +164,57 @@ public class UpdateEmployee extends JFrame implements ActionListener {
 				job.setSelectedItem("");
 				phone.setText("");
 				email.setText("");
+				return;
+			}
+			info = "select * from employee where eid=" + eidString;
+			rs = c.s.executeQuery(info);
 
-			} else {
-				info = "select * from employee where eid=" + eidString;
-				rs = c.s.executeQuery(info);
-
-				// Getting the corresponding values from the database
-				if (!rs.isBeforeFirst()) {
-					JOptionPane.showMessageDialog(null, "Record not found");
-					eid.setText("");
-					// Disabling the textfields
-					name.setEditable(false);
-					age.setEditable(false);
-					salary.setEditable(false);
-					phone.setEditable(false);
-					email.setEditable(false);
-					gender.setVisible(false);
-					job.setVisible(false);
-					// Setting the text fields
-					name.setText("");
-					age.setText("");
-					salary.setText("");
-					gender.setSelectedItem("");
-					job.setSelectedItem("");
-					phone.setText("");
-					email.setText("");
-				} else {
-					while (rs.next()) {
-						String nameStr = rs.getString("name");
-						int ageInt = rs.getInt("age");
-						int salaryInt = rs.getInt("salary");
-						String genderStr = rs.getString("gender");
-						String jobStr = rs.getString("job");
-						long phoneLong = rs.getLong("phone");
-						String emailStr = rs.getString("email");
-						// Enabling the textfields
-						name.setEditable(true);
-						age.setEditable(true);
-						salary.setEditable(true);
-						phone.setEditable(true);
-						email.setEditable(true);
-						gender.setVisible(true);
-						job.setVisible(true);
-						// Setting the text fields
-						name.setText(nameStr);
-						age.setText(Integer.toString(ageInt));
-						salary.setText(Integer.toString(salaryInt));
-						gender.setSelectedItem(genderStr);
-						job.setSelectedItem(jobStr);
-						phone.setText(Long.toString(phoneLong));
-						email.setText(emailStr);
-					}
-
-				}
+			// Getting the corresponding values from the database
+			if (!rs.isBeforeFirst()) {
+				JOptionPane.showMessageDialog(null, "Record not found");
+				eid.setText("");
+				// Disabling the textfields
+				name.setEditable(false);
+				age.setEditable(false);
+				salary.setEditable(false);
+				phone.setEditable(false);
+				email.setEditable(false);
+				gender.setVisible(false);
+				job.setVisible(false);
+				// Setting the text fields
+				name.setText("");
+				age.setText("");
+				salary.setText("");
+				gender.setSelectedItem("");
+				job.setSelectedItem("");
+				phone.setText("");
+				email.setText("");
+				return;
+			}
+			while (rs.next()) {
+				String nameStr = rs.getString("name");
+				int ageInt = rs.getInt("age");
+				int salaryInt = rs.getInt("salary");
+				String genderStr = rs.getString("gender");
+				String jobStr = rs.getString("job");
+				long phoneLong = rs.getLong("phone");
+				String emailStr = rs.getString("email");
+				// Enabling the textfields
+				name.setEditable(true);
+				age.setEditable(true);
+				salary.setEditable(true);
+				phone.setEditable(true);
+				email.setEditable(true);
+				gender.setVisible(true);
+				job.setVisible(true);
+				// Setting the text fields
+				name.setText(nameStr);
+				age.setText(Integer.toString(ageInt));
+				salary.setText(Integer.toString(salaryInt));
+				gender.setSelectedItem(genderStr);
+				job.setSelectedItem(jobStr);
+				phone.setText(Long.toString(phoneLong));
+				email.setText(emailStr);
 			}
 		} catch (Exception ex) {
 			JOptionPane.showMessageDialog(null, ex);

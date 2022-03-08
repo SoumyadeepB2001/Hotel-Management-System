@@ -172,62 +172,63 @@ public class UpdateDriver extends JFrame implements ActionListener {
 				phone.setText("");
 				plate.setText("");
 				available.setSelectedItem("");
-			} else {
-				info = "select * from driver where d_id=" + didStr;
-				rs = c.s.executeQuery(info);
+				return;
+			}
+			info = "select * from driver where d_id=" + didStr;
+			rs = c.s.executeQuery(info);
 
-				// Getting the corresponding values from the database
-				if (!rs.isBeforeFirst()) {
-					JOptionPane.showMessageDialog(null, "Record not found");
-					did.setText("");
-					// Disabling the textfields
-					name.setEditable(false);
-					age.setEditable(false);
-					salary.setEditable(false);
-					phone.setEditable(false);
-					comp.setEditable(false);
-					plate.setEditable(false);
-					gender.setVisible(false);
-					available.setVisible(false);
-					// Setting the text fields
-					name.setText("");
-					age.setText("");
-					salary.setText("");
-					comp.setText("");
-					gender.setSelectedItem("");
-					phone.setText("");
-					plate.setText("");
-					available.setSelectedItem("");
-				} else {
-					while (rs.next()) {
-						String nameStr = rs.getString("name");
-						int ageInt = rs.getInt("age");
-						int salaryInt = rs.getInt("salary");
-						String genderStr = rs.getString("gender");
-						String modelStr = rs.getString("model");
-						long phoneLong = rs.getLong("phone");
-						String plateStr = rs.getString("plate");
-						String availStr = rs.getString("avail");
-						// Enabling the textfields
-						name.setEditable(true);
-						age.setEditable(true);
-						salary.setEditable(true);
-						phone.setEditable(true);
-						comp.setEditable(true);
-						plate.setEditable(true);
-						gender.setVisible(true);
-						available.setVisible(true);
-						// Setting the text fields
-						name.setText(nameStr);
-						age.setText(Integer.toString(ageInt));
-						salary.setText(Integer.toString(salaryInt));
-						comp.setText(modelStr);
-						gender.setSelectedItem(genderStr);
-						phone.setText(Long.toString(phoneLong));
-						plate.setText(plateStr);
-						available.setSelectedItem(availStr);
-					}
-				}
+			// Getting the corresponding values from the database
+			if (!rs.isBeforeFirst()) {
+				JOptionPane.showMessageDialog(null, "Record not found");
+				did.setText("");
+				// Disabling the textfields
+				name.setEditable(false);
+				age.setEditable(false);
+				salary.setEditable(false);
+				phone.setEditable(false);
+				comp.setEditable(false);
+				plate.setEditable(false);
+				gender.setVisible(false);
+				available.setVisible(false);
+				// Setting the text fields
+				name.setText("");
+				age.setText("");
+				salary.setText("");
+				comp.setText("");
+				gender.setSelectedItem("");
+				phone.setText("");
+				plate.setText("");
+				available.setSelectedItem("");
+				return;
+			}
+			while (rs.next()) {
+				String nameStr = rs.getString("name");
+				int ageInt = rs.getInt("age");
+				int salaryInt = rs.getInt("salary");
+				String genderStr = rs.getString("gender");
+				String modelStr = rs.getString("model");
+				long phoneLong = rs.getLong("phone");
+				String plateStr = rs.getString("plate");
+				String availStr = rs.getString("avail");
+				// Enabling the textfields
+				name.setEditable(true);
+				age.setEditable(true);
+				salary.setEditable(true);
+				phone.setEditable(true);
+				comp.setEditable(true);
+				plate.setEditable(true);
+				gender.setVisible(true);
+				available.setVisible(true);
+				// Setting the text fields
+				name.setText(nameStr);
+				age.setText(Integer.toString(ageInt));
+				salary.setText(Integer.toString(salaryInt));
+				comp.setText(modelStr);
+				gender.setSelectedItem(genderStr);
+				phone.setText(Long.toString(phoneLong));
+				plate.setText(plateStr);
+				available.setSelectedItem(availStr);
+
 			}
 		} catch (Exception ex) {
 			JOptionPane.showMessageDialog(null, ex);

@@ -54,14 +54,14 @@ public class DeleteRoom extends JFrame implements ActionListener {
 				while (rs.next()) {
 					String roomNum = rs.getString("r_num");
 					long price = rs.getInt("price");
-					String availabilty = rs.getString("availability");
+					String availability = rs.getString("availability");
 					String cleaningStatus = rs.getString("cleaning_status");
 					String roomType = rs.getString("type");
 					String bedType = rs.getString("bed");
 
 					if (JOptionPane.showConfirmDialog(null,
 							"Are you sure you want to delete this record?\nRoom Number: " + roomNum + "\nAvailability: "
-									+ availabilty
+									+ availability
 									+ "\nCleaning Status: "
 									+ cleaningStatus + "\nPrice: " + price + "\nRoom Type: " + roomType + "\nBed Type: "
 									+ bedType,

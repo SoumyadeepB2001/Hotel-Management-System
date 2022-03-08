@@ -1,5 +1,4 @@
-
-//import java.awt.*;
+import java.awt.*;
 import javax.swing.*;
 import java.awt.Color;
 import java.awt.event.*;
@@ -7,7 +6,7 @@ import java.awt.event.*;
 public class AdminPanel extends JFrame implements ActionListener {
 
 	JButton addDrivers, addEmployees, addRooms, delDrivers, delEmployees, delRooms, updateEmployees, updateDrivers,
-			updateRooms;
+			updateRooms, exit;
 	JPanel contentPane;
 
 	AdminPanel() {
@@ -28,6 +27,7 @@ public class AdminPanel extends JFrame implements ActionListener {
 		updateDrivers = new JButton("Update Driver");
 		updateEmployees = new JButton("Update Employee");
 		updateRooms = new JButton("Update Room");
+		exit = new JButton("Exit");
 
 		addDrivers.setBackground(Color.WHITE);
 		addDrivers.setForeground(Color.RED);
@@ -47,18 +47,22 @@ public class AdminPanel extends JFrame implements ActionListener {
 		updateEmployees.setForeground(Color.RED);
 		updateRooms.setBackground(Color.WHITE);
 		updateRooms.setForeground(Color.RED);
+		exit.setBackground(Color.WHITE);
+		exit.setForeground(Color.RED);
 
-		addEmployees.setBounds(50, 80, 140, 60);
-		delEmployees.setBounds(210, 80, 140, 60);
-		updateEmployees.setBounds(370, 80, 140, 60);
+		addEmployees.setBounds(50, 50, 140, 60);
+		delEmployees.setBounds(210, 50, 140, 60);
+		updateEmployees.setBounds(370, 50, 140, 60);
 
-		addDrivers.setBounds(50, 180, 140, 60);
-		delDrivers.setBounds(210, 180, 140, 60);
-		updateDrivers.setBounds(370, 180, 140, 60);
+		addDrivers.setBounds(50, 150, 140, 60);
+		delDrivers.setBounds(210, 150, 140, 60);
+		updateDrivers.setBounds(370, 150, 140, 60);
 
-		addRooms.setBounds(50, 280, 140, 60);
-		delRooms.setBounds(210, 280, 140, 60);
-		updateRooms.setBounds(370, 280, 140, 60);
+		addRooms.setBounds(50, 250, 140, 60);
+		delRooms.setBounds(210, 250, 140, 60);
+		updateRooms.setBounds(370, 250, 140, 60);
+
+		exit.setBounds(210, 330, 140, 40);
 
 		add(addDrivers);
 		add(addEmployees);
@@ -69,6 +73,7 @@ public class AdminPanel extends JFrame implements ActionListener {
 		add(updateDrivers);
 		add(updateEmployees);
 		add(updateRooms);
+		add(exit);
 
 		addEmployees.addActionListener(this);
 		addDrivers.addActionListener(this);
@@ -79,6 +84,7 @@ public class AdminPanel extends JFrame implements ActionListener {
 		updateEmployees.addActionListener(this);
 		updateDrivers.addActionListener(this);
 		updateRooms.addActionListener(this);
+		exit.addActionListener(this);
 	}
 
 	public void actionPerformed(ActionEvent e) {
@@ -104,6 +110,7 @@ public class AdminPanel extends JFrame implements ActionListener {
 				break;
 
 			case "Update Driver":
+				new UpdateDriver();
 				break;
 
 			case "Add Room":
@@ -115,33 +122,17 @@ public class AdminPanel extends JFrame implements ActionListener {
 				break;
 
 			case "Update Room":
+				new UpdateRoom();
 				break;
 
+			case "Exit":
+				Frame[] allFrames = Frame.getFrames();
+				// Iterate through the allFrames array
+				for (Frame fr : allFrames) {
+					fr.dispose();
+				}
+				break;
 		}
-		// if (e.getSource() == addEmployees) {
-		// new AddEmployee();
-		// }
-
-		// else if (e.getSource() == delEmployees) {
-		// new DeleteEmployee();
-		// }
-
-		// else if (e.getSource() == addDrivers) {
-		// new AddDriver();
-		// }
-
-		// else if (e.getSource() == delDrivers) {
-		// new DeleteDriver();
-		// }
-
-		// else if (e.getSource() == addRooms) {
-		// new AddRoom();
-		// }
-
-		// else if (e.getSource() == delRooms) {
-		// new DeleteRoom();
-		// }
-
 	}
 
 	public static void main(String[] args) {
