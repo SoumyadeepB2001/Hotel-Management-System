@@ -9,11 +9,11 @@ public class Customer extends JFrame implements ActionListener, WindowListener {
 	JTable table;
 	JPanel contentPane;
 	JScrollPane scroll;
-	JLabel l1, l2, l3, l4, l5, l6, l7, l8, l9, l10;
+	JLabel l1, l2, l3, l4, l5, l6, l7, l8, l9, l10, l11;
 
 	Customer() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(300, 50, 1295, 750);
+		setBounds(10, 30, 1580, 800);
 		setTitle("Customers");
 		setResizable(false);
 		contentPane = new JPanel();
@@ -24,39 +24,43 @@ public class Customer extends JFrame implements ActionListener, WindowListener {
 
 		backBut = new JButton("Back");
 		backBut.addActionListener(this);
-		backBut.setBounds(590, 650, 80, 40);
+		backBut.setBounds(730, 710, 80, 35);
 		contentPane.add(backBut);
 
 		l1 = new JLabel("Name");
 		l1.setBounds(12, 10, 100, 15);
 		contentPane.add(l1);
 		l2 = new JLabel("Age");
-		l2.setBounds(138, 10, 100, 15);
+		l2.setBounds(153, 10, 100, 15);
 		contentPane.add(l2);
 		l3 = new JLabel("Gender");
-		l3.setBounds(264, 10, 100, 15);
+		l3.setBounds(294, 10, 100, 15);
 		contentPane.add(l3);
 		l4 = new JLabel("ID Proof");
-		l4.setBounds(390, 10, 100, 15);
+		l4.setBounds(435, 10, 100, 15);
 		contentPane.add(l4);
 		l5 = new JLabel("ID Number");
-		l5.setBounds(516, 10, 100, 15);
+		l5.setBounds(576, 10, 100, 15);
 		contentPane.add(l5);
 		l6 = new JLabel("Country");
-		l6.setBounds(642, 10, 100, 15);
+		l6.setBounds(717, 10, 100, 15);
 		contentPane.add(l6);
 		l7 = new JLabel("Phone");
-		l7.setBounds(768, 10, 100, 15);
+		l7.setBounds(858, 10, 100, 15);
 		contentPane.add(l7);
 		l8 = new JLabel("Room Number");
-		l8.setBounds(894, 10, 100, 15);
+		l8.setBounds(999, 10, 100, 15);
 		contentPane.add(l8);
 		l9 = new JLabel("Checked-In");
-		l9.setBounds(1020, 10, 100, 15);
+		l9.setBounds(1140, 10, 100, 15);
 		contentPane.add(l9);
-		l10 = new JLabel("Deposit");
-		l10.setBounds(1146, 10, 100, 15);
+		l10 = new JLabel("Check-in Time");
+		l10.setBounds(1281, 10, 100, 15);
 		contentPane.add(l10);
+
+		l11 = new JLabel("Deposit");
+		l11.setBounds(1422, 10, 100, 15);
+		contentPane.add(l11);
 
 		addWindowListener(this);
 	}
@@ -67,7 +71,7 @@ public class Customer extends JFrame implements ActionListener, WindowListener {
 			String info = "select * from customer";
 			ResultSet rs = c.s.executeQuery(info);
 			table = new JTable();
-			table.setBounds(10, 40, 1260, 600);
+			table.setBounds(10, 40, 1550, 660);
 			contentPane.add(table);
 			table.setModel(DbUtils.resultSetToTableModel(rs));
 		} catch (Exception ex) {

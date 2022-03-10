@@ -2,6 +2,8 @@ import javax.swing.*;
 //import java.sql.*;
 import java.awt.event.*;
 import java.awt.*;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class NewCustomerForm extends JFrame implements ActionListener {
 	JButton button;
@@ -9,9 +11,9 @@ public class NewCustomerForm extends JFrame implements ActionListener {
 	public ImageIcon i1, i2;
 	public Image i3;
 	public JLabel l1, l2, nameLab, ageLab, genderLab, idLab, idNumLab, countryLab, phoneLab, roomNumLab, checkInLab,
-			depositLab;
-	public JTextField name, age, idNum, country, phone, roomNum, deposit;
-	JComboBox <String> gender, IDDocs, checkedIn;
+			depositLab, timeLab;
+	public JTextField name, age, idNum, country, phone, roomNum, deposit, time;
+	JComboBox<String> gender, IDDocs, checkedIn;
 	String genders[] = { "Female", "Male", "Other" };
 	String yes_no[] = { "Yes", "No" };
 	String ID[] = { "Aadhar Card", "Voter Card", "Passport", "Driver's License", "Work ID" };
@@ -114,50 +116,67 @@ public class NewCustomerForm extends JFrame implements ActionListener {
 		checkedIn.setBounds(170, 480, 210, 30);
 		add(checkedIn);
 
+		timeLab = new JLabel("Time");
+		timeLab.setFont(new Font("Serif", Font.BOLD, 17));
+		timeLab.setBounds(50, 530, 100, 30);
+		add(timeLab);
+		time = new JTextField(currentTime()); // Here we call the currentTime() to show the current time on this
+												// textfield
+		time.setBounds(170, 530, 210, 30);
+		add(time);
+		time.setToolTipText("Time Format: yyyy-MM-dd HH:mm:ss");
+
 		depositLab = new JLabel("Deposit");
 		depositLab.setFont(new Font("Serif", Font.BOLD, 17));
-		depositLab.setBounds(50, 530, 100, 30);
+		depositLab.setBounds(50, 580, 100, 30);
 		add(depositLab);
 		deposit = new JTextField();
-		deposit.setBounds(170, 530, 210, 30);
+		deposit.setBounds(170, 580, 210, 30);
 		add(deposit);
 
 		button = new JButton("Save");
-		button.setBounds(190, 580, 100, 30);
+		button.setBounds(190, 630, 100, 30);
 		add(button);
 
 		button.addActionListener(this);
 
-		setBounds(550, 200, 940, 660);
+		setBounds(500, 50, 940, 710);
+	}
+
+	String currentTime() {
+		LocalDateTime myDateObj = LocalDateTime.now();
+		DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+		String formattedDate = myDateObj.format(myFormatObj);
+		return formattedDate;
 	}
 
 	public void actionPerformed(ActionEvent e) {
 
-		 try {
-		 String nameStr = name.getText();
-		 int ageInt = Integer.parseInt(age.getText());
-		 int depositInt = Integer.parseInt(deposit.getText());
-		 String roomNUmStr = roomNum.getText();
-		 long phoneLong = Long.parseLong(phone.getText());
-		 String countryStr = country.getText();
-		 String idNumStr = idNum.getText();
-		 String checkInStr = (String) checkedIn.getSelectedItem();
-		 String genderStr = (String) gender.getSelectedItem();
-		 String idStr = (String) IDDocs.getSelectedItem();
+		try {
+			String nameStr = name.getText();
+			int ageInt = Integer.parseInt(age.getText());
+			int depositInt = Integer.parseInt(deposit.getText());
+			String roomNUmStr = roomNum.getText();
+			long phoneLong = Long.parseLong(phone.getText());
+			String countryStr = country.getText();
+			String idNumStr = idNum.getText();
+			String checkInStr = (String) checkedIn.getSelectedItem();
+			String genderStr = (String) gender.getSelectedItem();
+			String timeStr = time.getText();
+			String idStr = (String) IDDocs.getSelectedItem();
 
-		DBCon db = new DBCon();
-		// idNum is PRIMARY KEY
-		String str = "INSERT INTO customer values( '" + nameStr + "', '" + ageInt + "', '" + genderStr + "','"
-					+ idStr + "', '" + idNumStr + "', '" + countryStr + "','" + phoneLong + "', '" + roomNUmStr
-					+ "', '" + checkInStr +"', '"+depositInt + "')";
+			DBCon db = new DBCon();
+			// idNum is PRIMARY KEY
+			String str = "INSERT INTO customer values( '" + nameStr + "', " + ageInt + ", '" + genderStr + "','"
+					+ idStr + "', '" + idNumStr + "', '" + countryStr + "'," + phoneLong + ", '" + roomNUmStr
+					+ "', '" + checkInStr + "', '" + timeStr + "', '" + depositInt + "')";
 
-
-		db.s.executeUpdate(str);
-		JOptionPane.showMessageDialog(null, "New customer added.");
-		setVisible(false);
+			db.s.executeUpdate(str);
+			JOptionPane.showMessageDialog(null, "New customer added.");
+			setVisible(false);
 		} catch (Exception ex) {
-		JOptionPane.showMessageDialog(null, ex);
-		ex.printStackTrace();
+			JOptionPane.showMessageDialog(null, ex+"\nFill all the details");
+			ex.printStackTrace();
 		}
 
 	}

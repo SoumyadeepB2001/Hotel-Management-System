@@ -5,7 +5,7 @@ import java.awt.*;
 public class Reception extends JFrame implements ActionListener {
 
 	JButton newCustomer, room, department, e_info, c_info, m_info, checkOut, checkStatus, roomStatus, pickUp,
-			searchRoom, logOut;
+			searchRoom, searchCustomer, checkOutHistory, logOut;
 	JPanel contentPane;
 	public ImageIcon i1, i2;
 	public Image i3;
@@ -25,10 +25,10 @@ public class Reception extends JFrame implements ActionListener {
 
 		// Adding the image
 		i1 = new ImageIcon(getClass().getResource("reception.jpg"));
-		i3 = i1.getImage().getScaledInstance(200, 200, Image.SCALE_DEFAULT);
+		i3 = i1.getImage().getScaledInstance(400, 400, Image.SCALE_DEFAULT);
 		i2 = new ImageIcon(i3);
 		l1 = new JLabel(i1);
-		l1.setBounds(220, 30, 500, 470);
+		l1.setBounds(220, 30, 550, 550);
 		contentPane.add(l1);
 
 		// Initializing all the buttons
@@ -98,13 +98,25 @@ public class Reception extends JFrame implements ActionListener {
 		searchRoom.setBounds(10, 430, 200, 30);
 		add(searchRoom);
 
+		searchCustomer = new JButton("Search Customer");
+		searchCustomer.setBackground(Color.WHITE);
+		searchCustomer.setForeground(Color.RED);
+		searchCustomer.setBounds(10, 470, 200, 30);
+		add(searchCustomer);
+
+		checkOutHistory = new JButton("Check Out History");
+		checkOutHistory.setBackground(Color.WHITE);
+		checkOutHistory.setForeground(Color.RED);
+		checkOutHistory.setBounds(10, 510, 200, 30);
+		add(checkOutHistory);
+
 		logOut = new JButton("Log Out");
 		logOut.setBackground(Color.WHITE);
 		logOut.setForeground(Color.RED);
-		logOut.setBounds(10, 470, 200, 30);
+		logOut.setBounds(10, 550, 200, 30);
 		add(logOut);
 
-		setBounds(530, 200, 750, 550); // This Line is very important and should be placed at the end only after the
+		setBounds(530, 200, 790, 630); // This Line is very important and should be placed at the end only after the
 										// image and buttons have been initialized. Or else the JFrame will not refresh
 										// itself.
 
@@ -120,6 +132,8 @@ public class Reception extends JFrame implements ActionListener {
 		roomStatus.addActionListener(this);
 		pickUp.addActionListener(this);
 		searchRoom.addActionListener(this);
+		searchCustomer.addActionListener(this);
+		checkOutHistory.addActionListener(this);
 		logOut.addActionListener(this);
 	}
 
@@ -151,7 +165,7 @@ public class Reception extends JFrame implements ActionListener {
 				break;
 
 			case "Update Check Status":
-				//new UpdateCheckStatus();
+				new UpdateCheckStatus();
 				break;
 
 			case "Log Out":

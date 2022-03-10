@@ -131,6 +131,7 @@ public class AdminPanel extends JFrame implements ActionListener {
 				for (Frame fr : allFrames) {
 					fr.dispose();
 				}
+				new Dashboard();
 				break;
 		}
 	}
