@@ -1,5 +1,5 @@
 import javax.swing.*;
-//import java.sql.*;
+import java.sql.*;
 import java.awt.event.*;
 import java.awt.*;
 import java.time.LocalDateTime;
@@ -12,8 +12,9 @@ public class NewCustomerForm extends JFrame implements ActionListener {
 	public Image i3;
 	public JLabel l1, l2, nameLab, ageLab, genderLab, idLab, idNumLab, countryLab, phoneLab, roomNumLab, checkInLab,
 			depositLab, timeLab;
-	public JTextField name, age, idNum, country, phone, roomNum, deposit, time;
+	public JTextField name, age, idNum, country, phone, deposit, time;
 	JComboBox<String> gender, IDDocs, checkedIn;
+	Choice roomNum; //To get the currently available rooms.
 	String genders[] = { "Female", "Male", "Other" };
 	String yes_no[] = { "Yes", "No" };
 	String ID[] = { "Aadhar Card", "Voter Card", "Passport", "Driver's License", "Work ID" };
@@ -104,7 +105,16 @@ public class NewCustomerForm extends JFrame implements ActionListener {
 		roomNumLab.setFont(new Font("Serif", Font.BOLD, 17));
 		roomNumLab.setBounds(50, 430, 100, 30);
 		add(roomNumLab);
-		roomNum = new JTextField();
+		roomNum = new Choice();
+		try{
+			DBCon c = new DBCon();
+			ResultSet rs = c.s.executeQuery("SELECT * FROM room WHERE availability = 'Available'"); //Fetches the list of currently available rooms
+			while(rs.next()){
+				roomNum.add(rs.getString("r_num"));    
+			}
+		}catch(Exception ex){ 
+			ex.printStackTrace();
+		}
 		roomNum.setBounds(170, 430, 210, 30);
 		add(roomNum);
 
@@ -156,7 +166,7 @@ public class NewCustomerForm extends JFrame implements ActionListener {
 			String nameStr = name.getText();
 			int ageInt = Integer.parseInt(age.getText());
 			int depositInt = Integer.parseInt(deposit.getText());
-			String roomNUmStr = roomNum.getText();
+			String roomNUmStr = (String) roomNum.getSelectedItem();
 			long phoneLong = Long.parseLong(phone.getText());
 			String countryStr = country.getText();
 			String idNumStr = idNum.getText();

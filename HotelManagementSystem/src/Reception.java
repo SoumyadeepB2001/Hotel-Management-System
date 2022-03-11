@@ -74,7 +74,7 @@ public class Reception extends JFrame implements ActionListener {
 		checkOut.setBounds(10, 270, 200, 30);
 		add(checkOut);
 
-		checkStatus = new JButton("Update Check Status");
+		checkStatus = new JButton("Update Customer Details");
 		checkStatus.setBackground(Color.WHITE);
 		checkStatus.setForeground(Color.RED);
 		checkStatus.setBounds(10, 310, 200, 30);
@@ -164,8 +164,8 @@ public class Reception extends JFrame implements ActionListener {
 				new Manager();
 				break;
 
-			case "Update Check Status":
-				new UpdateCheckStatus();
+			case "Update Customer Details":
+				new UpdateCustomerDetails();
 				break;
 
 			case "Log Out":

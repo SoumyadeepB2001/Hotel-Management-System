@@ -11,4 +11,6 @@ A: getSource() returns the object of the source while getActionCommand() Returns
 Difference between frame.dispose() and frame.setVisible(false)
 A: setVisible(false) makes the frame invisible while still stored in memory while the dispose() releases memory after removing the frame from view.
 
+In NewCustomerForm room number list is dynamic meaning only those rooms show up which are currently available (may or may not be cleaned).
+
 
