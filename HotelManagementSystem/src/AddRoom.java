@@ -115,7 +115,7 @@ public class AddRoom extends JFrame implements ActionListener {
 					+ priceLong + "', '" + roomTypeStr + "', '" + bedStr + "')";
 
 			db.s.executeUpdate(str);
-			JOptionPane.showMessageDialog(null, "New room added.");
+			JOptionPane.showMessageDialog(null, "New room added");
 			setVisible(false);
 		} catch (Exception ex) {
 			JOptionPane.showMessageDialog(null, ex);

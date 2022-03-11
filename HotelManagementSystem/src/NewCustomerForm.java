@@ -14,7 +14,7 @@ public class NewCustomerForm extends JFrame implements ActionListener {
 			depositLab, timeLab;
 	public JTextField name, age, idNum, country, phone, deposit, time;
 	JComboBox<String> gender, IDDocs, checkedIn;
-	Choice roomNum; //To get the currently available rooms.
+	Choice roomNum; // To get the currently available rooms.
 	String genders[] = { "Female", "Male", "Other" };
 	String yes_no[] = { "Yes", "No" };
 	String ID[] = { "Aadhar Card", "Voter Card", "Passport", "Driver's License", "Work ID" };
@@ -106,13 +106,13 @@ public class NewCustomerForm extends JFrame implements ActionListener {
 		roomNumLab.setBounds(50, 430, 100, 30);
 		add(roomNumLab);
 		roomNum = new Choice();
-		try{
+		try {//Fetches the list of currently available rooms
 			DBCon c = new DBCon();
-			ResultSet rs = c.s.executeQuery("SELECT * FROM room WHERE availability = 'Available'"); //Fetches the list of currently available rooms
-			while(rs.next()){
-				roomNum.add(rs.getString("r_num"));    
+			ResultSet rs = c.s.executeQuery("SELECT * FROM room WHERE availability = 'Available'"); 
+			while (rs.next()) {
+				roomNum.add(rs.getString("r_num"));
 			}
-		}catch(Exception ex){ 
+		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
 		roomNum.setBounds(170, 430, 210, 30);
@@ -166,7 +166,7 @@ public class NewCustomerForm extends JFrame implements ActionListener {
 			String nameStr = name.getText();
 			int ageInt = Integer.parseInt(age.getText());
 			int depositInt = Integer.parseInt(deposit.getText());
-			String roomNUmStr = (String) roomNum.getSelectedItem();
+			String roomNumStr = (String) roomNum.getSelectedItem();
 			long phoneLong = Long.parseLong(phone.getText());
 			String countryStr = country.getText();
 			String idNumStr = idNum.getText();
@@ -178,14 +178,22 @@ public class NewCustomerForm extends JFrame implements ActionListener {
 			DBCon db = new DBCon();
 			// idNum is PRIMARY KEY
 			String str = "INSERT INTO customer values( '" + nameStr + "', " + ageInt + ", '" + genderStr + "','"
-					+ idStr + "', '" + idNumStr + "', '" + countryStr + "'," + phoneLong + ", '" + roomNUmStr
+					+ idStr + "', '" + idNumStr + "', '" + countryStr + "'," + phoneLong + ", '" + roomNumStr
 					+ "', '" + checkInStr + "', '" + timeStr + "', '" + depositInt + "')";
 
 			db.s.executeUpdate(str);
-			JOptionPane.showMessageDialog(null, "New customer added.");
-			setVisible(false);
+			JOptionPane.showMessageDialog(null, "New customer added");
+
+			try {//Updates availability of rooms
+				DBCon c = new DBCon();
+				c.s2.executeUpdate("UPDATE room SET availability = 'Unavailable' WHERE r_num = '" + roomNumStr + "'"); 
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			}
+
+			dispose();
 		} catch (Exception ex) {
-			JOptionPane.showMessageDialog(null, ex+"\nFill all the details");
+			JOptionPane.showMessageDialog(null, ex + "\nFill all the details");
 			ex.printStackTrace();
 		}
 

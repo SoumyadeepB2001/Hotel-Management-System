@@ -7,9 +7,11 @@ public class UpdateCustomerDetails extends JFrame implements ActionListener {
 	JButton checkButton, updateButton;
 	JPanel contentPane;
 	public JLabel l1, c_idLab, nameLab, roomNumLab, paidLab, pendingLab, ageLab, genderLab, countryLab, phoneLab;
-	public JTextField c_id, roomNum, name, paid, pending, age, country, phone;
+	public JTextField c_id, name, paid, pending, age, country, phone;
 	JComboBox<String> gender;
 	String genders[] = { "Female", "Male", "Other" };
+	Choice roomNum;
+	String roomNumberCheck;// Stores the current room number the customer is staying in
 
 	public static void main(String[] args) {
 		new UpdateCustomerDetails();
@@ -86,10 +88,10 @@ public class UpdateCustomerDetails extends JFrame implements ActionListener {
 		roomNumLab.setFont(new Font("Serif", Font.BOLD, 17));
 		roomNumLab.setBounds(50, 380, 100, 30);
 		add(roomNumLab);
-		roomNum = new JTextField();
+		roomNum = new Choice();
 		roomNum.setBounds(180, 380, 210, 30);
 		add(roomNum);
-		roomNum.setEditable(false);
+		roomNum.setVisible(false);
 
 		paidLab = new JLabel("Amount Paid (₹)");
 		paidLab.setFont(new Font("Serif", Font.BOLD, 17));
@@ -151,7 +153,7 @@ public class UpdateCustomerDetails extends JFrame implements ActionListener {
 				age.setEditable(false);
 				country.setEditable(false);
 				phone.setEditable(false);
-				roomNum.setEditable(false);
+				roomNum.setVisible(false);
 				paid.setEditable(false);
 				gender.setVisible(false);
 				pending.setEditable(false);
@@ -159,7 +161,6 @@ public class UpdateCustomerDetails extends JFrame implements ActionListener {
 				name.setText("");
 				age.setText("");
 				country.setText("");
-				roomNum.setText("");
 				gender.setSelectedItem("");
 				phone.setText("");
 				paid.setText("");
@@ -177,7 +178,7 @@ public class UpdateCustomerDetails extends JFrame implements ActionListener {
 				age.setEditable(false);
 				country.setEditable(false);
 				phone.setEditable(false);
-				roomNum.setEditable(false);
+				roomNum.setVisible(false);
 				paid.setEditable(false);
 				gender.setVisible(false);
 				pending.setEditable(false);
@@ -185,7 +186,6 @@ public class UpdateCustomerDetails extends JFrame implements ActionListener {
 				name.setText("");
 				age.setText("");
 				country.setText("");
-				roomNum.setText("");
 				gender.setSelectedItem("");
 				phone.setText("");
 				paid.setText("");
@@ -201,27 +201,39 @@ public class UpdateCustomerDetails extends JFrame implements ActionListener {
 				String countryStr = rs.getString("country");
 				long phoneLong = rs.getLong("phone");
 				String roomNumStr = rs.getString("r_num");
+				roomNumberCheck = rs.getString("r_num");
+				// Add the current room the customer is staying in
+				roomNum.add(roomNumStr);
+				// Fetches the list of currently available rooms
+				try {
+					DBCon db = new DBCon();
+					ResultSet rs1 = db.s.executeQuery("SELECT * FROM room WHERE availability = 'Available'");
+					while (rs1.next()) {
+						roomNum.add(rs1.getString("r_num"));
+					}
+				} catch (Exception ex) {
+					ex.printStackTrace();
+				}
 
-				//Enabling the textfields
+				// Enabling the textfields
 				name.setEditable(true);
 				age.setEditable(true);
 				country.setEditable(true);
 				phone.setEditable(true);
-				roomNum.setEditable(true);
+				roomNum.setVisible(true);
 				paid.setEditable(true);
 				gender.setVisible(true);
 				pending.setEditable(true);
-
+				// Setting the textfields
 				name.setText(nameStr);
 				age.setText(Integer.toString(ageInt));
 				country.setText(countryStr);
-				roomNum.setText(roomNumStr);
 				gender.setSelectedItem(genderStr);
 				phone.setText(Long.toString(phoneLong));
 				paid.setText(Integer.toString(depositInt));
 				pending.setText("");
 
-				String roomPrice = "SELECT * FROM room WHERE r_num= '" + roomNum.getText() + "'";
+				String roomPrice = "SELECT * FROM room WHERE r_num= '" + roomNum.getSelectedItem() + "'";
 				rs2 = c.s2.executeQuery(roomPrice);
 				while (rs2.next()) {
 					long priceLong = rs2.getLong("price");
@@ -238,6 +250,47 @@ public class UpdateCustomerDetails extends JFrame implements ActionListener {
 	}
 
 	void update() {
+		if (c_id.getText().equals("")) {
+			JOptionPane.showMessageDialog(null, "Please enter Room number");
+			// Disabling the textfields
+			name.setEditable(false);
+			age.setEditable(false);
+			country.setEditable(false);
+			phone.setEditable(false);
+			roomNum.setVisible(false);
+			paid.setEditable(false);
+			gender.setVisible(false);
+			pending.setEditable(false);
+			// Setting the text fields
+			name.setText("");
+			age.setText("");
+			country.setText("");
+			gender.setSelectedItem("");
+			phone.setText("");
+			paid.setText("");
+			pending.setText("");
+			return;
+		}
 
+		try {
+			try {
+				DBCon db2 = new DBCon();
+				// Set the current room as available
+				db2.s.executeUpdate(
+						"UPDATE room SET availability = 'Available' WHERE r_num = '" + roomNumberCheck + "'");
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			}
+			String nameStr = name.getText();
+			int ageInt = Integer.parseInt(age.getText());
+			String countryStr = country.getText();
+			long phoneLong = Long.parseLong(phone.getText());
+			String genderStr = (String) gender.getSelectedItem();
+
+		} catch (Exception ex) {
+			JOptionPane.showMessageDialog(null, ex);
+			ex.printStackTrace();
+		}
+		dispose();
 	}
 }

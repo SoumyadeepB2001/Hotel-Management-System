@@ -223,6 +223,26 @@ public class UpdateEmployee extends JFrame implements ActionListener {
 	}
 
 	void updateInfo() {
+		if (eid.getText().equals("")) {
+			JOptionPane.showMessageDialog(null, "Please enter Employee ID");
+			// Disabling the textfields
+			name.setEditable(false);
+			age.setEditable(false);
+			salary.setEditable(false);
+			phone.setEditable(false);
+			email.setEditable(false);
+			gender.setVisible(false);
+			job.setVisible(false);
+			// Setting the text fields
+			name.setText("");
+			age.setText("");
+			salary.setText("");
+			gender.setSelectedItem("");
+			job.setSelectedItem("");
+			phone.setText("");
+			email.setText("");
+			return;
+		}
 		try {
 			String nameStr = name.getText();
 			int ageInt = Integer.parseInt(age.getText());
