@@ -66,7 +66,7 @@ public class UpdateCustomerDetails extends JFrame implements ActionListener {
 		add(gender);
 		gender.setVisible(false);
 
-		countryLab = new JLabel("Name");
+		countryLab = new JLabel("Country");
 		countryLab.setFont(new Font("Serif", Font.BOLD, 17));
 		countryLab.setBounds(50, 280, 100, 30);
 		add(countryLab);
@@ -286,6 +286,23 @@ public class UpdateCustomerDetails extends JFrame implements ActionListener {
 			String countryStr = country.getText();
 			long phoneLong = Long.parseLong(phone.getText());
 			String genderStr = (String) gender.getSelectedItem();
+			String roomNumStr = (String) roomNum.getSelectedItem();
+			int paidAmt = Integer.parseInt(paid.getText());
+			String c_idStr = c_id.getText();
+
+			// Updating Customer details
+			DBCon c = new DBCon();
+			String str = "UPDATE customer SET name ='" + nameStr + "', age =" + ageInt + ",gender ='" + genderStr
+					+ "', country='" + countryStr + "', phone=" + phoneLong + ", r_num='"
+					+ roomNumStr + "', deposit =" + paidAmt + " WHERE idnum = '" + c_idStr + "'";
+			c.s.executeUpdate(str);
+
+			// Updating availability of room
+			DBCon c2 = new DBCon();
+			c2.s.executeUpdate("UPDATE room SET availability = 'Unavailable' WHERE r_num = '" + roomNumStr + "'");
+			JOptionPane.showMessageDialog(null, "Cutomer details updated");
+
+			dispose();
 
 		} catch (Exception ex) {
 			JOptionPane.showMessageDialog(null, ex);

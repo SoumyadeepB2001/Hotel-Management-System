@@ -13,4 +13,6 @@ A: setVisible(false) makes the frame invisible while still stored in memory whil
 
 In NewCustomerForm room number list is dynamic meaning only those rooms show up which are currently available (may or may not be cleaned).
 
+If somebody changes room number then the room he was living in becomes available.
 
+Date/Time is automatically updated when a new customer form is opened.
