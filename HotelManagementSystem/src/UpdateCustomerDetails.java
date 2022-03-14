@@ -3,7 +3,7 @@ import java.sql.*;
 import java.awt.event.*;
 import java.awt.*;
 
-public class UpdateCustomerDetails extends JFrame implements ActionListener {
+public class UpdateCustomerDetails extends JFrame implements ActionListener, KeyListener {
 	JButton checkButton, updateButton;
 	JPanel contentPane;
 	public JLabel l1, c_idLab, nameLab, roomNumLab, paidLab, pendingLab, ageLab, genderLab, countryLab, phoneLab;
@@ -101,6 +101,7 @@ public class UpdateCustomerDetails extends JFrame implements ActionListener {
 		paid.setBounds(180, 430, 210, 30);
 		add(paid);
 		paid.setEditable(false);
+		paid.addKeyListener(this);
 
 		pendingLab = new JLabel("Pending (₹)");
 		pendingLab.setFont(new Font("Serif", Font.BOLD, 17));
@@ -156,7 +157,6 @@ public class UpdateCustomerDetails extends JFrame implements ActionListener {
 				roomNum.setVisible(false);
 				paid.setEditable(false);
 				gender.setVisible(false);
-				pending.setEditable(false);
 				// Setting the text fields
 				name.setText("");
 				age.setText("");
@@ -181,7 +181,6 @@ public class UpdateCustomerDetails extends JFrame implements ActionListener {
 				roomNum.setVisible(false);
 				paid.setEditable(false);
 				gender.setVisible(false);
-				pending.setEditable(false);
 				// Setting the text fields
 				name.setText("");
 				age.setText("");
@@ -223,7 +222,6 @@ public class UpdateCustomerDetails extends JFrame implements ActionListener {
 				roomNum.setVisible(true);
 				paid.setEditable(true);
 				gender.setVisible(true);
-				pending.setEditable(true);
 				// Setting the textfields
 				name.setText(nameStr);
 				age.setText(Integer.toString(ageInt));
@@ -250,8 +248,9 @@ public class UpdateCustomerDetails extends JFrame implements ActionListener {
 	}
 
 	void update() {
-		if (c_id.getText().equals("")) {
-			JOptionPane.showMessageDialog(null, "Please enter Room number");
+		if (c_id.getText().equals("") || name.getText().equals("") || paid.getText().equals("")
+				|| age.getText().equals("") || country.getText().equals("") || phone.getText().equals("")) {
+			JOptionPane.showMessageDialog(null, "Please fill all the details");
 			// Disabling the textfields
 			name.setEditable(false);
 			age.setEditable(false);
@@ -260,7 +259,6 @@ public class UpdateCustomerDetails extends JFrame implements ActionListener {
 			roomNum.setVisible(false);
 			paid.setEditable(false);
 			gender.setVisible(false);
-			pending.setEditable(false);
 			// Setting the text fields
 			name.setText("");
 			age.setText("");
@@ -273,14 +271,6 @@ public class UpdateCustomerDetails extends JFrame implements ActionListener {
 		}
 
 		try {
-			try {
-				DBCon db2 = new DBCon();
-				// Set the current room as available
-				db2.s.executeUpdate(
-						"UPDATE room SET availability = 'Available' WHERE r_num = '" + roomNumberCheck + "'");
-			} catch (Exception ex) {
-				ex.printStackTrace();
-			}
 			String nameStr = name.getText();
 			int ageInt = Integer.parseInt(age.getText());
 			String countryStr = country.getText();
@@ -297,7 +287,16 @@ public class UpdateCustomerDetails extends JFrame implements ActionListener {
 					+ roomNumStr + "', deposit =" + paidAmt + " WHERE idnum = '" + c_idStr + "'";
 			c.s.executeUpdate(str);
 
-			// Updating availability of room
+			// Making previous alloted room available
+			try {
+				DBCon db2 = new DBCon();
+				// Set the current room as available
+				db2.s.executeUpdate(
+						"UPDATE room SET availability = 'Available' WHERE r_num = '" + roomNumberCheck + "'");
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			}
+			// Updating availability of new alloted room
 			DBCon c2 = new DBCon();
 			c2.s.executeUpdate("UPDATE room SET availability = 'Unavailable' WHERE r_num = '" + roomNumStr + "'");
 			JOptionPane.showMessageDialog(null, "Cutomer details updated");
@@ -305,9 +304,45 @@ public class UpdateCustomerDetails extends JFrame implements ActionListener {
 			dispose();
 
 		} catch (Exception ex) {
-			JOptionPane.showMessageDialog(null, ex);
+			JOptionPane.showMessageDialog(null, ex + "\nFill all the Text Fields");
 			ex.printStackTrace();
 		}
-		dispose();
+	}
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+
+	}
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+
+	}
+
+	// Fetches the pending amount on updating the paid amount
+	@Override
+	public void keyReleased(KeyEvent e) {
+		if (e.getSource() == paid) {
+			DBCon c = new DBCon();
+			ResultSet rs;
+			String info = "SELECT * FROM room WHERE r_num= '" + roomNum.getSelectedItem() + "'";
+			try {
+				if (!paid.getText().equals("")) {
+					rs = c.s2.executeQuery(info);
+					while (rs.next()) {
+						long priceLong = rs.getLong("price");
+						priceLong = priceLong - Integer.parseInt(paid.getText());
+						pending.setText(Long.toString(priceLong));
+					}
+				} else {
+					pending.setText("");
+				}
+
+			} catch (Exception ex) {
+				JOptionPane.showMessageDialog(null, ex);
+				ex.printStackTrace();
+			}
+		}
+
 	}
 }
