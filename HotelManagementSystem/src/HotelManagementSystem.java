@@ -12,6 +12,7 @@ public class HotelManagementSystem extends JFrame implements ActionListener {
 		setLocationRelativeTo(null);
 		setVisible(true);
 		setResizable(false);
+		getContentPane().setBackground(Color.WHITE);
 
 		l1 = new JLabel("");
 		b1 = new JButton("Next");

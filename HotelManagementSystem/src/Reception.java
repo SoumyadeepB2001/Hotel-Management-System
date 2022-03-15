@@ -168,6 +168,10 @@ public class Reception extends JFrame implements ActionListener {
 				new UpdateCustomerDetails();
 				break;
 
+			case "Check Out":
+				new CheckOut();
+				break;
+
 			case "Log Out":
 				Frame[] allFrames = Frame.getFrames();
 				// Iterate through the allFrames array

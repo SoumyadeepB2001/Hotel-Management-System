@@ -18,6 +18,8 @@ INSERT INTO department VALUES('Maintenance', 15000);
 INSERT INTO department VALUES('Food', 11000);
 INSERT INTO department VALUES('Security', 16000);
 
+CREATE TABLE history(name varchar(100), age int, gender varchar(10), id varchar(20), idnum varchar(25), country varchar(20), phone bigint, r_num varchar(10), checkin_time timestamp, checkout_time timestamp, primary key(idnum));
+
 
 
 
