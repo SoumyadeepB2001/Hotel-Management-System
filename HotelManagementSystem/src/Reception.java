@@ -168,8 +168,16 @@ public class Reception extends JFrame implements ActionListener {
 				new UpdateCustomerDetails();
 				break;
 
+			case "Update Room Status":
+				new UpdateRoom();
+				break;
+
 			case "Check-out":
 				new CheckOut();
+				break;
+
+			case "Search Room":
+				new SearchRoom();
 				break;
 
 			case "Check-out History":
