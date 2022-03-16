@@ -68,7 +68,7 @@ public class Reception extends JFrame implements ActionListener {
 		m_info.setBounds(10, 230, 200, 30);
 		add(m_info);
 
-		checkOut = new JButton("Check Out");
+		checkOut = new JButton("Check-out");
 		checkOut.setBackground(Color.WHITE);
 		checkOut.setForeground(Color.RED);
 		checkOut.setBounds(10, 270, 200, 30);
@@ -104,7 +104,7 @@ public class Reception extends JFrame implements ActionListener {
 		searchCustomer.setBounds(10, 470, 200, 30);
 		add(searchCustomer);
 
-		checkOutHistory = new JButton("Check Out History");
+		checkOutHistory = new JButton("Check-out History");
 		checkOutHistory.setBackground(Color.WHITE);
 		checkOutHistory.setForeground(Color.RED);
 		checkOutHistory.setBounds(10, 510, 200, 30);
@@ -168,8 +168,12 @@ public class Reception extends JFrame implements ActionListener {
 				new UpdateCustomerDetails();
 				break;
 
-			case "Check Out":
+			case "Check-out":
 				new CheckOut();
+				break;
+
+			case "Check-out History":
+				new CheckOutHistory();
 				break;
 
 			case "Log Out":
