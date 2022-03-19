@@ -6,8 +6,7 @@ public class SearchCustomer extends JFrame implements ActionListener {
 	JButton searchBut, clearBut;
 	JPanel contentPane;
 
-	public JLabel l1, nameLab, ageLab, genderLab, idLab, idNumLab, countryLab, phoneLab, roomNumLab, checkStatusLab,
-			depositLab, checkInLab, checkOutLab;
+	public JLabel l1, nameLab, ageLab, genderLab, idLab, idNumLab, countryLab, phoneLab, roomNumLab, checkStatusLab, checkInLab, checkOutLab;
 	public JTextField name, age, idNum, country, phone, deposit, checkInTime, checkOutTime, roomNum;
 	JComboBox<String> gender, IDDocs, checkStatusBox, ageComparison, checkIn, checkOut;
 	String genders[] = { "Any", "Female", "Male", "Other" };
@@ -142,7 +141,7 @@ public class SearchCustomer extends JFrame implements ActionListener {
 		add(searchBut);
 		searchBut.addActionListener(this);
 
-		clearBut = new JButton("Clear");
+		clearBut = new JButton("Reset");
 		clearBut.setBounds(265, 645, 100, 30);
 		add(clearBut);
 		clearBut.addActionListener(this);
@@ -285,6 +284,23 @@ public class SearchCustomer extends JFrame implements ActionListener {
 	}
 
 	void clear() {
+		name.setText("");
+		age.setText("");
+		idNum.setText("");
+		country.setText("");
+		phone.setText("");
+		checkInTime.setText("");
+		checkOutTime.setText("");
+		roomNum.setText("");
 
+		gender.setSelectedIndex(0);
+		IDDocs.setSelectedIndex(0);
+		checkStatusBox.setSelectedIndex(0);
+		ageComparison.setSelectedIndex(0);
+		checkIn.setSelectedIndex(0);
+		checkOut.setSelectedIndex(0);
+
+		checkOut.setVisible(false);
+		checkOutTime.setEditable(false);
 	}
 }
