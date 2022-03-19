@@ -1,7 +1,8 @@
 name of the database is project in mysql
-table list: login, employee, driver, room, customer
+table list: login, employee, driver, room, customer,history
 
 Difference between executeQuery and executeUpdate. 
+Difference between contentPane and JFrame
 
 All frames array
 
