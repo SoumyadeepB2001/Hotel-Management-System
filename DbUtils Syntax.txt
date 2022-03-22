@@ -1,0 +1,13 @@
+DbUtils Syntax
+try {
+			DBCon c = new DBCon();
+			String info = "select * from room";
+			ResultSet rs = c.s.executeQuery(info);
+			table = new JTable();
+			table.setBounds(10, 40, 600, 600);
+			contentPane.add(table);
+			table.setModel(DbUtils.resultSetToTableModel(rs));
+		} catch (Exception ex) {
+			JOptionPane.showMessageDialog(null, ex);
+			ex.printStackTrace();
+		}
