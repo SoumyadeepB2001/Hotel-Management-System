@@ -17,3 +17,5 @@ In NewCustomerForm room number list is dynamic meaning only those rooms show up 
 If somebody changes room number then the room he was living in becomes available.
 
 Date/Time is automatically updated when a new customer form is opened.
+
+Add ERD and Cost Diagram in project file
